@@ -14,7 +14,9 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header layui-bg-gray">
-        <div class="layui-logo">网络拓扑图</div>
+        <a href="https://github.com/xwenyuan/jTopo_topology.git" target="_blank">
+            <div class="layui-logo">网络拓扑图</div>
+        </a>
         <!-- 顶部工具栏 -->
         <div class="layui-nav layui-layout-right">
             <input class="layui-input" id="queryText" style="display: inline-block;width: 150px;height: 25px;"
@@ -47,61 +49,70 @@
                         <div class="layui-colla-item">
                             <h2 class="layui-colla-title">连线</h2>
                             <div class="layui-colla-content layui-show">
-                                <table class="tp_table" width="100%">
+                                <table width="100%">
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="baseLine1" divType="baseMode" gtype="L" datatype="line"
+                                            <div topo-div-type="topo-link" topo-linktype="line"
                                                  draggable="false"
                                                  onclick="editor.lineType='line'">
-                                                <img id="simpleLine" src="static/public/img/line.png"
-                                                     class="nodeStyle"/>
+                                                <img class="link-icon-style" id="link-line"
+                                                     src="static/public/img/line.png"/>
                                                 <br><span>连线</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="baseLine2" divType="baseMode" gtype="L" datatype="foldLine"
+                                            <div topo-div-type="topo-link" topo-linktype="foldline"
                                                  draggable="false"
                                                  onclick="editor.lineType='foldLine';editor.config.direction='horizontal';">
-                                                <img id="foldLineH" src="static/public/img/foldline_horizontal.png"
-                                                     class="nodeStyle"/>
+                                                <img class="link-icon-style" id="link-foldline-h"
+                                                     src="static/public/img/foldline_horizontal.png"/>
                                                 <br><span>折线(横向)</span>
                                             </div>
                                         </td>
                                     </tr>
-
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="baseLine5" divType="baseMode" gtype="L" datatype="foldLine"
+                                            <div topo-div-type="topo-link" topo-linktype="foldline"
                                                  draggable="false"
                                                  onclick="editor.lineType='foldLine';editor.config.direction='vertical';">
-                                                <img id="foldLineV" src="static/public/img/foldline_vertical.png"
-                                                     class="nodeStyle"/>
+                                                <img class="link-icon-style" id="link-foldline-v"
+                                                     src="static/public/img/foldline_vertical.png"/>
                                                 <br><span>折线(纵向)</span>
                                             </div>
                                         </td>
                                     </tr>
-
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="baseLine3" divType="baseMode" gtype="L" datatype="foldLine"
+                                            <div topo-div-type="topo-link" topo-linktype="flexline"
                                                  draggable="false"
                                                  onclick="editor.lineType='flexLine';editor.config.direction='horizontal';">
-                                                <img id="flexLineH" src="static/public/img/flexline_horizontal.png"
-                                                     class="nodeStyle"/>
+                                                <img class="link-icon-style" id="link-flexline-h"
+                                                     src="static/public/img/flexline_horizontal.png"/>
                                                 <br><span>二次折线(横向)</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="baseLine4" divType="baseMode" gtype="L" datatype="foldLine"
+                                            <div topo-div-type="topo-link" topo-linktype="flexline"
                                                  draggable="false"
                                                  onclick="editor.lineType='flexLine';editor.config.direction='vertical';">
-                                                <img id="flexLineV" src="static/public/img/flexline_vertical.png"
-                                                     class="nodeStyle"/>
+                                                <img class="link-icon-style" id="link-flexline-v"
+                                                     src="static/public/img/flexline_vertical.png"/>
                                                 <br><span>二次折线(纵向)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div topo-div-type="topo-link" topo-linktype="curveline"
+                                                 draggable="false"
+                                                 onclick="editor.lineType='curveLine'">
+                                                <img class="link-icon-style" id="link-curveline"
+                                                     src="static/public/img/flexline_vertical.png"/>
+                                                <br><span>曲线</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -111,33 +122,31 @@
                         <div class="layui-colla-item">
                             <h2 class="layui-colla-title">虚拟网络设备</h2>
                             <div class="layui-colla-content layui-show">
-                                <table class="tp_table" width="100%">
+                                <table width="100%">
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="ExtChange" divType="mode" datatype="EC" draggable="true"
+                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true"
                                                  title="这是一个交换机">
-                                                <img src="static/public/img/icon_switcher.png" class="nodeStyle"/>
+                                                <img class="node-icon-style" src="static/public/img/icon_switcher.png"/>
                                                 <br><span>交换机</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="Router" divType="mode" datatype="VR" draggable="true"
+                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true"
                                                  title="这是一个路由器">
-                                                <img src="static/public/img/icon_router.png" class="nodeStyle"/>
+                                                <img class="node-icon-style" src="static/public/img/icon_router.png"/>
                                                 <br><span>路由器</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="SelfExtChange" divType="mode" datatype="ECVR" draggable="true"
+                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true"
                                                  title="使用一台VM主机安装多个网卡进行子网的互通,充当路由控制器">
-                                                <img src="static/public/img/icon_route_controller.png"
-                                                     class="nodeStyle"/>
+                                                <img class="node-icon-style"
+                                                     src="static/public/img/icon_route_controller.png"/>
                                                 <br><span>VM路由控制器</span>
                                             </div>
 
@@ -145,17 +154,16 @@
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="Firewall" divType="mode" datatype="FW" draggable="true">
-                                                <img src="static/public/img/icon_firewall.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true">
+                                                <img class="node-icon-style" src="static/public/img/icon_firewall.png"/>
                                                 <br><span>防火墙</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="f5" divType="mode" datatype="f5" draggable="true">
-                                                <img src="static/public/img/icon_balancer.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true">
+                                                <img class="node-icon-style" src="static/public/img/icon_balancer.png"/>
                                                 <br><span>负载均衡</span>
                                             </div>
                                         </td>
@@ -166,53 +174,55 @@
                         <div class="layui-colla-item">
                             <h2 class="layui-colla-title">虚拟主机</h2>
                             <div class="layui-colla-content layui-show">
-                                <table class="tp_table" width="100%">
+                                <table width="100%">
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="ClientVM" divType="mode" datatype="VM" draggable="true">
-                                                <img src="static/public/img/icon_virtual_host.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                                <img class="node-icon-style"
+                                                     src="static/public/img/icon_virtual_host.png"/>
                                                 <br><span>虚拟主机</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="PCVM" divType="mode" datatype="VM" draggable="true">
-                                                <img src="static/public/img/icon_client.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                                <img class="node-icon-style" src="static/public/img/icon_client.png"/>
                                                 <br><span>客户机</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="ServerVM" divType="mode" datatype="VM" draggable="true">
-                                                <img src="static/public/img/icon_server.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                                <img class="node-icon-style" src="static/public/img/icon_server.png"/>
                                                 <br><span>服务器</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="WebServerVM" divType="mode" datatype="VM" draggable="true">
-                                                <img src="static/public/img/icon_webserver.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                                <img class="node-icon-style"
+                                                     src="static/public/img/icon_webserver.png"/>
                                                 <br><span>Web服务器</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="MailServerVM" divType="mode" datatype="VM" draggable="true">
-                                                <img src="static/public/img/icon_mailserver.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                                <img class="node-icon-style"
+                                                     src="static/public/img/icon_mailserver.png"/>
                                                 <br><span>邮件服务器</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="FileServerVM" divType="mode" datatype="VM" draggable="true">
-                                                <img src="static/public/img/icon_fileserver.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                                <img class="node-icon-style"
+                                                     src="static/public/img/icon_fileserver.png"/>
                                                 <br><span>文件服务器</span>
                                             </div>
                                         </td>
@@ -223,40 +233,38 @@
                         <div class="layui-colla-item">
                             <h2 class="layui-colla-title">物理网络设备</h2>
                             <div class="layui-colla-content layui-show">
-                                <table class="tp_table" width="100%">
+                                <table width="100%">
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="Py_VM" divType="mode" datatype="Py_VM" draggable="true">
-                                                <img src="static/public/img/icon_physical_host.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="PM" draggable="true">
+                                                <img class="node-icon-style"
+                                                     src="static/public/img/icon_physical_host.png"/>
                                                 <br><span>物理主机</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="Py_ExtChange" divType="mode" datatype="Py_EC" draggable="true">
-                                                <img src="static/public/img/icon_physical_switcher.png"
-                                                     class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="PM" draggable="true">
+                                                <img class="node-icon-style"
+                                                     src="static/public/img/icon_physical_switcher.png"/>
                                                 <br><span>物理交换机</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="Py_Firewall" divType="mode" datatype="Py_FW" draggable="true">
-                                                <img src="static/public/img/icon_firewall.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="PM" draggable="true">
+                                                <img class="node-icon-style" src="static/public/img/icon_firewall.png"/>
                                                 <br><span>物理防火墙</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="Py_Router" divType="mode" datatype="Py_VR" draggable="true">
-                                                <img src="static/public/img/icon_physical_router.png"
-                                                     class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="PM" draggable="true">
+                                                <img class="node-icon-style"
+                                                     src="static/public/img/icon_physical_router.png"/>
                                                 <br><span>物理路由器</span>
                                             </div>
                                         </td>
@@ -267,20 +275,19 @@
                         <div class="layui-colla-item">
                             <h2 class="layui-colla-title">位置图形</h2>
                             <div class="layui-colla-content layui-show">
-                                <table class="tp_table" width="100%">
+                                <table width="100%">
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="Cloud" divType="mode" datatype="CL" draggable="true">
-                                                <img src="static/public/img/icon_cloud.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="CL" draggable="true">
+                                                <img class="node-icon-style" src="static/public/img/icon_cloud.png"/>
                                                 <br><span>云</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div id="House" divType="mode" datatype="HO" draggable="true">
-                                                <img src="static/public/img/icon_house.png" class="nodeStyle"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="HO" draggable="true">
+                                                <img class="node-icon-style" src="static/public/img/icon_house.png"/>
                                                 <br><span>房屋</span>
                                             </div>
                                         </td>
@@ -292,117 +299,138 @@
                 </div>
             </div>
             <div class="layui-col-md8">
-                <div id="contextBody" class="mapContext" style="height:900px;">
-                    <div id="nodeMenu" class="modeRight2" style="z-index: 9">
+                <div id="topology-body" class="topology-context" style="height:900px;">
+                    <div id="node-menu" class="right-click-menu" style="z-index: 9">
                         <div class="fa fa-th-large menu-item"
                              onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>应用布局</span>
                         </div>
-                        <div class="fa fa-th-list menu-item" id="changeNodeTextPos"
+                        <div class="fa fa-th-list menu-item" id="change-node-text-pos"
                              onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>文字位置</span>
                         </div>
-                        <div class="fa fa-search-plus menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-search-plus menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>放大(Shift+)</span>
                         </div>
-                        <div class="fa fa-search-minus menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-search-minus menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>缩小(Shift-)</span>
                         </div>
-                        <div class="fa fa-rotate-right menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-rotate-right menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>顺时针旋转(Shift+U)</span>
                         </div>
-                        <div class="fa fa-rotate-left menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-rotate-left menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>逆时针旋转(Shift+I)</span>
                         </div>
-                        <div class="fa fa-times menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-times menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>删除节点(Delete)</span>
                         </div>
-                        <div class="fa fa-files-o menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-files-o menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>复制节点(Shift+C)</span>
                         </div>
-                        <div class="fa fa-mail-reply menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-mail-reply menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>撤销(Shift+Z)</span></div>
-                        <div class="fa fa-mail-forward menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-mail-forward menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>重做(Shift+R)</span></div>
                     </div>
                     <!-- 应用布局选项(二级菜单) -->
-                    <div id="layoutMenu" class="modeRight2" style="z-index: 9">
-                        <div class="fa fa-minus-circle menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                    <div id="layout-menu" class="right-click-menu" style="z-index: 9">
+                        <div class="fa fa-minus-circle menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>取消布局</span>
                         </div>
-                        <div class="fa fa-object-group menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-object-group menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>分组布局</span>
                         </div>
-                        <div class="fa fa-share-alt menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-share-alt menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>树形布局</span>
                         </div>
-                        <div class="fa fa-dot-circle-o menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-dot-circle-o menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>圆形布局</span>
                         </div>
                     </div>
                     <!-- 文字位置选项(二级菜单) -->
-                    <div id="nodeTextPosMenu" class="modeRight2" style="z-index: 9">
-                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                    <div id="node-text-pos-menu" class="right-click-menu" style="z-index: 9">
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>顶部居左</span>
                         </div>
-                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>顶部居中</span>
                         </div>
-                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>顶部居右</span>
                         </div>
-                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>中间居左</span>
                         </div>
-                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>居中</span>
                         </div>
-                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>中间居右</span></div>
-                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>底部居左</span>
                         </div>
-                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>底部居中</span>
                         </div>
-                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>底部居右</span>
                         </div>
                     </div>
-
-                    <div id="lineMenu" class="modeRight2" style="z-index: 9">
+                    <div id="line-menu" class="right-click-menu" style="z-index: 9">
                         <!--<div class="modeRightEdit" onMouseMove="this.style.backgroundColor='#c5e7f6'"-->
                         <!--onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">添加描述</span></div>-->
-                        <div class="fa fa-times menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-times menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>删除连线</span></div>
                     </div>
-
-                    <div id="mainMenu" class="modeRight2" style="z-index: 9">
-                        <div class="fa fa-search-plus menu-item" onClick="editor.utils.scalingBig()"
+                    <div id="main-menu" class="right-click-menu" style="z-index: 9">
+                        <div class="fa fa-search-plus menu-item"
+                             onClick="editor.utils.scalingBig()"
                              onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>放大(Shift+)</span>
@@ -438,7 +466,8 @@
                              onMouseOut="this.style.backgroundColor=''">
                             <span>保存(Shift+S)</span>
                         </div>
-                        <div class="fa fa-calendar-plus-o menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                        <div class="fa fa-calendar-plus-o menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span id="ruleLineSpan">隐藏参考线(Shift+L)</span>
                         </div>
@@ -454,26 +483,39 @@
                             <span id="showJSON">查看拓扑JSON结构</span></div>
                     </div>
 
-                    <div id="groupMangeMenu" class="modeRight2" style="z-index: 9">
-                        <div id="newGroup" class="modeRightEdit" onMouseMove="this.style.backgroundColor='#c5e7f6'"
-                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">新建分组</span></div>
-                        <div id="alignGroup" class="modeRightEdit" onMouseMove="this.style.backgroundColor='#c5e7f6'"
-                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">对齐方式</span></div>
+                    <div id="group-mange-menu" class="right-click-menu" style="z-index: 9">
+                        <div class="fa fa-pencil-square-o menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>新建分组</span>
+                        </div>
+                        <div class="fa fa-align-left menu-item" id="align-group"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>对齐方式</span>
+                        </div>
                     </div>
-                    <div id="groupAlignMenu" class="modeRight2" style="z-index: 9">
-                        <div class="modeRightMiddle" onMouseMove="this.style.backgroundColor='#c5e7f6'"
-                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">水平对齐</span></div>
-                        <div class="modeTopMiddle" onMouseMove="this.style.backgroundColor='#c5e7f6'"
-                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">垂直对齐</span></div>
+                    <div class="right-click-menu" id="group-align-menu" style="z-index: 9">
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>水平对齐</span>
+                        </div>
+                        <div class="menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>垂直对齐</span>
+                        </div>
                     </div>
 
-                    <div id="containerMangeMenu" class="modeRight2" style="z-index: 9">
-                        <div class="modeRightDel" onMouseMove="this.style.backgroundColor='#c5e7f6'"
-                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">拆分</span></div>
+                    <div class="right-click-menu" id="container-mange-menu" style="z-index: 9">
+                        <div class="fa fa-columns menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>拆分</span>
+                        </div>
                     </div>
-                    <textarea onkeydown="if(event.keyCode==13)this.blur();"
-                              style="display:none;width: 60px;position: absolute;z-index: 9" id="deviceText"></textarea>
-                    <canvas id="drawCanvas" class="mapContext">
+                    <canvas class="topology-context" id="topology-canvas">
                         您的浏览器不支持HTML5!
                     </canvas>
                 </div>
@@ -521,52 +563,65 @@
     // };
 
     $(document).ready(function () {
-        $("#simpleLine").click(function () {
+        // 选择连线方式后的css样式
+        $("#link-line").click(function () {
             $(this).css("background-color", "darkgray");
-            $("#foldLineH").css("background-color", "white");
-            $("#foldLineV").css("background-color", "white");
-            $("#flexLineH").css("background-color", "white");
-            $("#flexLineV").css("background-color", "white");
+            $("#link-foldline-h").css("background-color", "white");
+            $("#link-foldline-v").css("background-color", "white");
+            $("#link-flexline-h").css("background-color", "white");
+            $("#link-flexline-v").css("background-color", "white");
+            $("#link-curveline").css("background-color", "white");
         });
-        $("#foldLineH").click(function () {
+        $("#link-foldline-h").click(function () {
             $(this).css("background-color", "darkgray");
-            $("#simpleLine").css("background-color", "white");
-            $("#foldLineV").css("background-color", "white");
-            $("#flexLineH").css("background-color", "white");
-            $("#flexLineV").css("background-color", "white");
+            $("#link-line").css("background-color", "white");
+            $("#link-foldline-v").css("background-color", "white");
+            $("#link-flexline-h").css("background-color", "white");
+            $("#link-flexline-v").css("background-color", "white");
+            $("#link-curveline").css("background-color", "white");
         });
-        $("#foldLineV").click(function () {
+        $("#link-foldline-v").click(function () {
             $(this).css("background-color", "darkgray");
-            $("#simpleLine").css("background-color", "white");
-            $("#foldLineH").css("background-color", "white");
-            $("#flexLineH").css("background-color", "white");
-            $("#flexLineV").css("background-color", "white");
+            $("#link-line").css("background-color", "white");
+            $("#link-foldline-h").css("background-color", "white");
+            $("#link-flexline-h").css("background-color", "white");
+            $("#link-flexline-v").css("background-color", "white");
+            $("#link-curveline").css("background-color", "white");
         });
-        $("#flexLineH").click(function () {
+        $("#link-flexline-h").click(function () {
             $(this).css("background-color", "darkgray");
-            $("#simpleLine").css("background-color", "white");
-            $("#foldLineH").css("background-color", "white");
-            $("#foldLineV").css("background-color", "white");
-            $("#flexLineV").css("background-color", "white");
+            $("#link-line").css("background-color", "white");
+            $("#link-foldline-h").css("background-color", "white");
+            $("#link-foldline-v").css("background-color", "white");
+            $("#link-flexline-v").css("background-color", "white");
+            $("#link-curveline").css("background-color", "white");
         });
-        $("#flexLineV").click(function () {
+        $("#link-flexline-v").click(function () {
             $(this).css("background-color", "darkgray");
-            $("#simpleLine").css("background-color", "white");
-            $("#foldLineH").css("background-color", "white");
-            $("#foldLineV").css("background-color", "white");
-            $("#flexLineH").css("background-color", "white");
+            $("#link-line").css("background-color", "white");
+            $("#link-foldline-h").css("background-color", "white");
+            $("#link-foldline-v").css("background-color", "white");
+            $("#link-flexline-h").css("background-color", "white");
+            $("#link-curveline").css("background-color", "white");
+        });
+        $("#link-curveline").click(function () {
+            $(this).css("background-color", "darkgray");
+            $("#link-line").css("background-color", "white");
+            $("#link-foldline-h").css("background-color", "white");
+            $("#link-foldline-v").css("background-color", "white");
+            $("#link-flexline-h").css("background-color", "white");
+            $("#link-flexline-v").css("background-color", "white");
         });
 
-        var modes = jQuery("[divType='mode']");
-        var modeLength = modes.length;
-
-        for (var i = 0; i < modeLength; i++) {
-            modes[i].gtype = modes[i].getAttribute("gtype");
-            modes[i].datatype = modes[i].getAttribute("datatype");
-            var text = $(modes[i]).find("span").eq(0).text();
-            editor.drag(modes[i], document.getElementById('drawCanvas'), text);
+        // 节点树中每个节点的拖放动作定义给拓扑图编辑器
+        var nodes = $("[topo-div-type='topo-node']");
+        var nodeLength = nodes.length;
+        for (var i = 0; i < nodeLength; i++) {
+            nodes[i].nodetype = nodes[i].getAttribute("topo-nodetype");
+            var text = $(nodes[i]).find("span").eq(0).text();
+            editor.drag(nodes[i], document.getElementById('topology-canvas'), text);
         }
-        //加载网络拓扑图
+        // 加载网络拓扑图
         editor.loadTopology('${topologyId}', "images/backimg.png");
 
         // 更新当前拓扑图结构(调用方式)

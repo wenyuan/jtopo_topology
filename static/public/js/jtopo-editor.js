@@ -51,7 +51,7 @@ TopologyPanel.prototype.saveToplogy = function () {
         var nodes = containers[c].childs;
         for (var n = 0; n < nodes.length; n++) {
             if (nodes[n] instanceof JTopo.Node) {
-                temp.push(nodes[n].deviceId);
+                temp.push(nodes[n].node_id);
             }
         }
         containers[c].childNodes = temp.join(",");
@@ -181,24 +181,22 @@ function TopologyEditor() {
     // 当前选择的节点对象
     this.currentNode = null;
     // 节点右键菜单DOM对象
-    this.nodeMenu = $("#nodeMenu");
+    this.nodeMenu = $("#node-menu");
     // 连线右键菜单DOM对象
-    this.lineMenu = $("#lineMenu");
+    this.lineMenu = $("#line-menu");
     // 全局右键菜单
-    this.mainMenu = $("#mainMenu");
+    this.mainMenu = $("#main-menu");
     // 布局管理菜单
-    this.layoutMenu = $("#layoutMenu");
+    this.layoutMenu = $("#layout-menu");
     // 节点文字方向
-    this.nodeTextPosMenu = $("#nodeTextPosMenu");
-    // 节点文字编辑框 todo...删掉
-    this.deviceEditText = $("#deviceText");
+    this.nodeTextPosMenu = $("#node-text-pos-menu");
     // 节点分组菜单
-    this.groupMangeMenu = $("#groupMangeMenu");
+    this.groupMangeMenu = $("#group-mange-menu");
     // 节点对齐菜单
-    this.groupAlignMenu = $("#groupAlignMenu");
-    this.alignGroup = $("#alignGroup");
+    this.groupAlignMenu = $("#group-align-menu");
+    this.alignGroup = $("#align-group");
     // 分组的容器管理菜单
-    this.containerMangeMenu = $("#containerMangeMenu");
+    this.containerMangeMenu = $("#container-mange-menu");
     // 是否显示参考线
     this.showRuleLine =true;
     // 标尺线数组
@@ -267,7 +265,7 @@ TopologyEditor.prototype.initMenus = function () {
     self.nodeMenu.on("mouseover", function (event) {
         // 菜单文字
         var text = $.trim($(event.target).text());
-        var menuX = parseInt(this.style.left) + $(document.getElementById('changeNodeTextPos')).width();
+        var menuX = parseInt(this.style.left) + $(document.getElementById('change-node-text-pos')).width();
         // 边界判断
         if (menuX + self.nodeTextPosMenu.width() * 2 >= self.stage.width) {
             menuX -= (self.nodeTextPosMenu.width() + self.nodeMenu.width());
@@ -275,7 +273,7 @@ TopologyEditor.prototype.initMenus = function () {
         if ("文字位置" === text) {
             self.layoutMenu.hide();
             self.nodeTextPosMenu.css({
-                top: parseInt(this.style.top) + $(document.getElementById('changeNodeTextPos')).height(),
+                top: parseInt(this.style.top) + $(document.getElementById('change-node-text-pos')).height(),
                 left: menuX
             }).show();
         } else if ("应用布局" === text) {
@@ -372,7 +370,7 @@ TopologyEditor.prototype.initMenus = function () {
                     break;
                 default :
             }
-            $("div[id$='Menu']").hide();
+            $("div[id$='-menu']").hide();
         }
     });
     // 连线菜单
@@ -424,7 +422,7 @@ TopologyEditor.prototype.initMenus = function () {
         $(this).hide();
         var text = $.trim($(event.target).text());
         selectedNodes.forEach(function (n) {
-            if (n.deviceId == currNode.deviceId) return true;
+            if (n.node_id == currNode.node_id) return true;
             if (text === "水平对齐") {
                 n.y = currNode.y;
             } else if (text === "垂直对齐") {
@@ -438,12 +436,12 @@ TopologyEditor.prototype.initMenus = function () {
         var text = $.trim($(event.target).text());
         if (text == "对齐方式") {
             //节点对齐
-            var menuX = parseInt(this.style.left) + $(document.getElementById('alignGroup')).width();
+            var menuX = parseInt(this.style.left) + $(document.getElementById('align-group')).width();
             if (menuX + self.alignGroup.width() * 2 >= self.stage.width) {
                 menuX -= (self.alignGroup.width() + self.groupMangeMenu.width());
             }
             self.groupAlignMenu.css({
-                top: parseInt(this.style.top) + $(document.getElementById('alignGroup')).height(),
+                top: parseInt(this.style.top) + $(document.getElementById('align-group')).height(),
                 left: menuX
             }).show();
         } else {
@@ -465,7 +463,7 @@ TopologyEditor.prototype.initMenus = function () {
     //容器管理菜单
     self.layoutMenu.on("click", function (event) {
         editor.currentNode.layout = {};
-        $("div[id$='Menu']").hide();
+        $("div[id$='-menu']").hide();
         var text = $.trim($(event.target).text());
         if (text == "取消布局") {
             editor.currentNode.layout.on = false;
@@ -535,9 +533,9 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
     }
     this.topologyId = topologyId;
     // 创建jTopo舞台屏幕对象
-    var canvas = document.getElementById('drawCanvas');
-    canvas.width = $("#contextBody").width();
-    canvas.height = $("#contextBody").height();
+    var canvas = document.getElementById('topology-canvas');
+    canvas.width = $("#topology-body").width();
+    canvas.height = $("#topology-body").height();
     // 加载空白的编辑器
     if (topologyJson === "-1") {
         this.stage = new JTopo.Stage(canvas);         // 定义舞台对象
@@ -578,14 +576,14 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
             alert('双击了节点');
         }
     });
-    //数去焦点,设置节点文字
-    self.deviceEditText.blur(function () {
-        if (self.currentNode) {
-            self.currentNode.text = self.deviceEditText.hide().val();
-            self.utils.saveNodeNewState();
-        } else
-            self.deviceEditText.hide();
-    });
+    // 数去焦点,设置节点文字 todo...节点信息保存
+    // self.deviceEditText.blur(function () {
+    //     if (self.currentNode) {
+    //         self.currentNode.text = self.deviceEditText.hide().val();
+    //         self.utils.saveNodeNewState();
+    //     } else
+    //         self.deviceEditText.hide();
+    // });
 
     //清除起始节点不完整的拖放线
     this.scene.mousedown(function (e) {
@@ -603,7 +601,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
         if (event.target && event.target instanceof JTopo.Node && event.target.layout && event.target.layout.on && event.target.layout.type && event.target.layout.type !== "auto")
             JTopo.layout.layoutNode(this, event.target, true, event);
         if (event.button === 2) {//右键菜单
-            $("div[id$='Menu']").hide();
+            $("div[id$='-menu']").hide();
             var menuY = event.layerY ? event.layerY : event.offsetY;
             var menuX = event.layerX ? event.layerX : event.offsetX;
             //记录鼠标触发位置在canvas中的相对位置
@@ -747,8 +745,8 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                         link.lineType = "curveLine";
                     }
                     // 保存线条所连接的两个节点ID
-                    link.deviceA = self.beginNode.deviceId;
-                    link.deviceZ = endNode.deviceId;
+                    link.deviceA = self.beginNode.node_id;
+                    link.deviceZ = endNode.node_id;
                     if (self.lineType !== "curveLine")
                         link.arrowsRadius = self.config.arrowsRadius;
                     link.strokeColor = self.config.strokeColor;
@@ -784,7 +782,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
         editor.utils.hideRuleLines();
         if (event.button === 0) {
             // 关闭弹出菜单（div）
-            $("div[id$='Menu']").hide();
+            $("div[id$='-menu']").hide();
         }
     });
 
@@ -956,10 +954,10 @@ TopologyEditor.prototype.drag = function (modeDiv, drawArea, text) {
         var dragSrc = this;
         var backImg = $(dragSrc).find("img").eq(0).attr("src");
         backImg = backImg.substring(backImg.lastIndexOf('/') + 1);
-        var datatype = $(this).attr("datatype");
+        var nodetype = $(this).attr("nodetype");
         try {
             //IE只允许KEY为text和URL
-            event.dataTransfer.setData('text', backImg + ";" + text + ";" + datatype);
+            event.dataTransfer.setData('text', backImg + ";" + text + ";" + nodetype);
         } catch (ex) {
             console.log(ex);
         }
@@ -973,24 +971,22 @@ TopologyEditor.prototype.drag = function (modeDiv, drawArea, text) {
     drawArea.ondrop = function (event) {
         event = event || window.event;
         var data = event.dataTransfer.getData("text");
-        var img, text, datatype;
+        var img, text, nodetype;
         if (data) {
             var datas = data.split(";");
             if (datas && datas.length === 3) {
                 img = datas[0];
                 text = datas[1];
-                datatype = datas[2];
+                nodetype = datas[2];
                 var node = new JTopo.Node();
                 node.fontColor = self.config.nodeFontColor;
                 // 节点坐标
                 node.setBound((event.layerX ? event.layerX : event.offsetX) - self.scene.translateX - self.config.defaultWidth / 2, (event.layerY ? event.layerY : event.offsetY) - self.scene.translateY - self.config.defaultHeight / 2, self.config.defaultWidth, self.config.defaultHeight);
                 // 节点图片
                 node.setImage(topoImgPath + img);
-                //var cuurId = "device" + (++self.modeIdIndex);
-                var cuurId = generateUUID();
                 // 节点数据
-                node.deviceId = cuurId;
-                node.dataType = datatype;
+                node.node_id = generateUUID();
+                node.nodetype = nodetype;
                 node.nodeImage = img;
                 self.scene.add(node);
                 self.currentNode = node;
@@ -1170,7 +1166,7 @@ editor.utils = {
                 // if (i == "templateId" && n.dataType != "VM") return true;
                 newNode[i] = n[i];
             });
-            newNode.id = "";
+            newNode.node_id = generateUUID();
             newNode.alpha = editor.config.alpha;
             newNode.strokeColor = editor.config.nodeStrokeColor;
             newNode.fillColor = editor.config.nodefillColor;
@@ -1183,7 +1179,6 @@ editor.utils = {
             newNode.selected = false;
             //var deviceNum = ++editor.modeIdIndex;
             //newNode.deviceId = "device" + deviceNum;
-            newNode.deviceId = "" + new Date().getTime() * Math.random();
             newNode.setLocation(n.x + n.width, n.y + n.height);
             newNode.text = n.text;
             newNode.setImage(n.image);
@@ -1399,7 +1394,7 @@ editor.utils = {
         editor.stage.childs.forEach(function (s) {
             s.childs.forEach(function (n) {
                 //id属性无有效值，说明该节点没有保存到数据库
-                if (n.deviceId != node.deviceId) {
+                if (n.node_id != node.node_id) {
                     n.selected = false;
                 }
             });

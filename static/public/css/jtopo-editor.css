@@ -153,13 +153,13 @@
     text-align: left;
 }
 
-.nodeStyle {
+.link-icon-style, .node-icon-style {
     cursor: pointer;
     width: 30px;
     height: 30px;
 }
 
-.modeRight2 {
+.right-click-menu {
     position: absolute;
     width: 180px;
     display: none;
@@ -195,7 +195,7 @@
     width: 100%;
 }
 
-.mapContext {
+.topology-context {
     overflow: auto;
     position: relative;
     background: #fff url(/jTopo_topology/static/public/img/backimg.png);
