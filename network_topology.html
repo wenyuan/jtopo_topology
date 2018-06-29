@@ -1,0 +1,589 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>网络拓扑图</title>
+    <!-- css of 3rd party  -->
+    <link href="static/layui-2.3.0/css/layui.css" type="text/css" rel="stylesheet"/>
+    <link href="static/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <!-- css of this project  -->
+    <link href="static/public/css/jtopo-editor.css" type="text/css" rel="stylesheet">
+</head>
+
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header layui-bg-gray">
+        <div class="layui-logo">网络拓扑图</div>
+        <!-- 顶部工具栏 -->
+        <div class="layui-nav layui-layout-right">
+            <input class="layui-input" id="queryText" style="display: inline-block;width: 150px;height: 25px;"
+                   placeholder="todo...节点搜索功能" onclick="alert('该功能暂时还未实现')">
+            <i class="fa fa-arrows toolbar-icon" aria-hidden="true" title="全屏查看"
+               onClick="editor.utils.showInFullScreen(editor.stage.canvas,'RequestFullScreen')"></i>
+            <i class="fa fa-align-center toolbar-icon" aria-hidden="true" title="居中显示"
+               onClick="editor.utils.showInCenter()"></i>
+            <i class="fa fa-eye toolbar-icon" aria-hidden="true" title="预览"
+               onClick="editor.utils.showPic()"></i>
+            <i class="fa fa-floppy-o toolbar-icon" aria-hidden="true" title="保存"
+               onClick="editor.saveToplogy(true)"></i>
+            <i class="fa fa-clipboard toolbar-icon" aria-hidden="true" title="复制"
+               onClick="editor.utils.cloneSelectedNodes()"></i>
+            <i class="fa fa-times toolbar-icon" aria-hidden="true" title="删除"
+               onClick="editor.utils.deleteSelectedNodes()"></i>
+            <i class="fa fa-trash-o toolbar-icon" aria-hidden="true" title="清空"
+               onClick="editor.utils.clear()"></i>
+            <i class="fa fa-search-plus toolbar-icon" aria-hidden="true" title="放大"
+               onClick="editor.utils.scalingBig()"></i>
+            <i class="fa fa-search-minus toolbar-icon" aria-hidden="true" title="缩小"
+               onClick="editor.utils.scalingSmall()"></i>
+        </div>
+    </div>
+    <div class="container">
+        <div class="layui-row">
+            <div class="layui-col-md2">
+                <div class="layui-side-scroll">
+                    <div class="layui-collapse" lay-accordion>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">连线</h2>
+                            <div class="layui-colla-content layui-show">
+                                <table class="tp_table" width="100%">
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="baseLine1" divType="baseMode" gtype="L" datatype="line"
+                                                 draggable="false"
+                                                 onclick="editor.lineType='line'">
+                                                <img id="simpleLine" src="static/public/img/line.png"
+                                                     class="nodeStyle"/>
+                                                <br><span>连线</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="baseLine2" divType="baseMode" gtype="L" datatype="foldLine"
+                                                 draggable="false"
+                                                 onclick="editor.lineType='foldLine';editor.config.direction='horizontal';">
+                                                <img id="foldLineH" src="static/public/img/foldline_horizontal.png"
+                                                     class="nodeStyle"/>
+                                                <br><span>折线(横向)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="baseLine5" divType="baseMode" gtype="L" datatype="foldLine"
+                                                 draggable="false"
+                                                 onclick="editor.lineType='foldLine';editor.config.direction='vertical';">
+                                                <img id="foldLineV" src="static/public/img/foldline_vertical.png"
+                                                     class="nodeStyle"/>
+                                                <br><span>折线(纵向)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="baseLine3" divType="baseMode" gtype="L" datatype="foldLine"
+                                                 draggable="false"
+                                                 onclick="editor.lineType='flexLine';editor.config.direction='horizontal';">
+                                                <img id="flexLineH" src="static/public/img/flexline_horizontal.png"
+                                                     class="nodeStyle"/>
+                                                <br><span>二次折线(横向)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="baseLine4" divType="baseMode" gtype="L" datatype="foldLine"
+                                                 draggable="false"
+                                                 onclick="editor.lineType='flexLine';editor.config.direction='vertical';">
+                                                <img id="flexLineV" src="static/public/img/flexline_vertical.png"
+                                                     class="nodeStyle"/>
+                                                <br><span>二次折线(纵向)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">虚拟网络设备</h2>
+                            <div class="layui-colla-content layui-show">
+                                <table class="tp_table" width="100%">
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="ExtChange" divType="mode" datatype="EC" draggable="true"
+                                                 title="这是一个交换机">
+                                                <img src="static/public/img/icon_switcher.png" class="nodeStyle"/>
+                                                <br><span>交换机</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="Router" divType="mode" datatype="VR" draggable="true"
+                                                 title="这是一个路由器">
+                                                <img src="static/public/img/icon_router.png" class="nodeStyle"/>
+                                                <br><span>路由器</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="SelfExtChange" divType="mode" datatype="ECVR" draggable="true"
+                                                 title="使用一台VM主机安装多个网卡进行子网的互通,充当路由控制器">
+                                                <img src="static/public/img/icon_route_controller.png"
+                                                     class="nodeStyle"/>
+                                                <br><span>VM路由控制器</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="Firewall" divType="mode" datatype="FW" draggable="true">
+                                                <img src="static/public/img/icon_firewall.png" class="nodeStyle"/>
+                                                <br><span>防火墙</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="f5" divType="mode" datatype="f5" draggable="true">
+                                                <img src="static/public/img/icon_balancer.png" class="nodeStyle"/>
+                                                <br><span>负载均衡</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">虚拟主机</h2>
+                            <div class="layui-colla-content layui-show">
+                                <table class="tp_table" width="100%">
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="ClientVM" divType="mode" datatype="VM" draggable="true">
+                                                <img src="static/public/img/icon_virtual_host.png" class="nodeStyle"/>
+                                                <br><span>虚拟主机</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="PCVM" divType="mode" datatype="VM" draggable="true">
+                                                <img src="static/public/img/icon_client.png" class="nodeStyle"/>
+                                                <br><span>客户机</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="ServerVM" divType="mode" datatype="VM" draggable="true">
+                                                <img src="static/public/img/icon_server.png" class="nodeStyle"/>
+                                                <br><span>服务器</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="WebServerVM" divType="mode" datatype="VM" draggable="true">
+                                                <img src="static/public/img/icon_webserver.png" class="nodeStyle"/>
+                                                <br><span>Web服务器</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="MailServerVM" divType="mode" datatype="VM" draggable="true">
+                                                <img src="static/public/img/icon_mailserver.png" class="nodeStyle"/>
+                                                <br><span>邮件服务器</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="FileServerVM" divType="mode" datatype="VM" draggable="true">
+                                                <img src="static/public/img/icon_fileserver.png" class="nodeStyle"/>
+                                                <br><span>文件服务器</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">物理网络设备</h2>
+                            <div class="layui-colla-content layui-show">
+                                <table class="tp_table" width="100%">
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="Py_VM" divType="mode" datatype="Py_VM" draggable="true">
+                                                <img src="static/public/img/icon_physical_host.png" class="nodeStyle"/>
+                                                <br><span>物理主机</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="Py_ExtChange" divType="mode" datatype="Py_EC" draggable="true">
+                                                <img src="static/public/img/icon_physical_switcher.png"
+                                                     class="nodeStyle"/>
+                                                <br><span>物理交换机</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="Py_Firewall" divType="mode" datatype="Py_FW" draggable="true">
+                                                <img src="static/public/img/icon_firewall.png" class="nodeStyle"/>
+                                                <br><span>物理防火墙</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="Py_Router" divType="mode" datatype="Py_VR" draggable="true">
+                                                <img src="static/public/img/icon_physical_router.png"
+                                                     class="nodeStyle"/>
+                                                <br><span>物理路由器</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">位置图形</h2>
+                            <div class="layui-colla-content layui-show">
+                                <table class="tp_table" width="100%">
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="Cloud" divType="mode" datatype="CL" draggable="true">
+                                                <img src="static/public/img/icon_cloud.png" class="nodeStyle"/>
+                                                <br><span>云</span>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div id="House" divType="mode" datatype="HO" draggable="true">
+                                                <img src="static/public/img/icon_house.png" class="nodeStyle"/>
+                                                <br><span>房屋</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md8">
+                <div id="contextBody" class="mapContext" style="height:900px;">
+                    <div id="nodeMenu" class="modeRight2" style="z-index: 9">
+                        <div class="fa fa-th-large menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>应用布局</span>
+                        </div>
+                        <div class="fa fa-th-list menu-item" id="changeNodeTextPos"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>文字位置</span>
+                        </div>
+                        <div class="fa fa-search-plus menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>放大(Shift+)</span>
+                        </div>
+                        <div class="fa fa-search-minus menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>缩小(Shift-)</span>
+                        </div>
+                        <div class="fa fa-rotate-right menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>顺时针旋转(Shift+U)</span>
+                        </div>
+                        <div class="fa fa-rotate-left menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>逆时针旋转(Shift+I)</span>
+                        </div>
+                        <div class="fa fa-times menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>删除节点(Delete)</span>
+                        </div>
+                        <div class="fa fa-files-o menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>复制节点(Shift+C)</span>
+                        </div>
+                        <div class="fa fa-mail-reply menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>撤销(Shift+Z)</span></div>
+                        <div class="fa fa-mail-forward menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>重做(Shift+R)</span></div>
+                    </div>
+                    <!-- 应用布局选项(二级菜单) -->
+                    <div id="layoutMenu" class="modeRight2" style="z-index: 9">
+                        <div class="fa fa-minus-circle menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>取消布局</span>
+                        </div>
+                        <div class="fa fa-object-group menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>分组布局</span>
+                        </div>
+                        <div class="fa fa-share-alt menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>树形布局</span>
+                        </div>
+                        <div class="fa fa-dot-circle-o menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>圆形布局</span>
+                        </div>
+                    </div>
+                    <!-- 文字位置选项(二级菜单) -->
+                    <div id="nodeTextPosMenu" class="modeRight2" style="z-index: 9">
+                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>顶部居左</span>
+                        </div>
+                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>顶部居中</span>
+                        </div>
+                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>顶部居右</span>
+                        </div>
+                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>中间居左</span>
+                        </div>
+                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>居中</span>
+                        </div>
+                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>中间居右</span></div>
+                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>底部居左</span>
+                        </div>
+                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>底部居中</span>
+                        </div>
+                        <div class="menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>底部居右</span>
+                        </div>
+                    </div>
+
+                    <div id="lineMenu" class="modeRight2" style="z-index: 9">
+                        <!--<div class="modeRightEdit" onMouseMove="this.style.backgroundColor='#c5e7f6'"-->
+                        <!--onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">添加描述</span></div>-->
+                        <div class="fa fa-times menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>删除连线</span></div>
+                    </div>
+
+                    <div id="mainMenu" class="modeRight2" style="z-index: 9">
+                        <div class="fa fa-search-plus menu-item" onClick="editor.utils.scalingBig()"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>放大(Shift+)</span>
+                        </div>
+                        <div class="fa fa-search-minus menu-item" onClick="editor.utils.scalingSmall()"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>缩小(Shift-)</span>
+                        </div>
+                        <div class="fa fa-trash-o menu-item" onClick="editor.utils.clear();"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>清空(Shift+Y)</span>
+                        </div>
+                        <div class="fa fa-eye menu-item" onClick="editor.utils.showPic();"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>预览(Shift+P)</span>
+                        </div>
+                        <div class="fa fa-arrows menu-item"
+                             onClick="editor.utils.showInFullScreen(editor.stage.canvas,'RequestFullScreen')"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>全屏查看(Shift+F)</span>
+                        </div>
+                        <div class="fa fa-align-center menu-item" onClick="editor.utils.showInCenter()"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>居中显示(Shift+G)</span>
+                        </div>
+                        <div class="fa fa-floppy-o menu-item" onClick="editor.saveToplogy(true)"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>保存(Shift+S)</span>
+                        </div>
+                        <div class="fa fa-calendar-plus-o menu-item" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span id="ruleLineSpan">隐藏参考线(Shift+L)</span>
+                        </div>
+                        <div class="fa fa-question-circle menu-item" onclick="alert('帮助文档')"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span id="showHelp">查看帮助(Shift+H)</span>
+                        </div>
+                        <div class="fa fa-info-circle menu-item"
+                             onclick="window.open('json_view.html', '当前拓扑结构JSON展示', '').document.write(editor.stage.toJson())"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span id="showJSON">查看拓扑JSON结构</span></div>
+                    </div>
+
+                    <div id="groupMangeMenu" class="modeRight2" style="z-index: 9">
+                        <div id="newGroup" class="modeRightEdit" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">新建分组</span></div>
+                        <div id="alignGroup" class="modeRightEdit" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">对齐方式</span></div>
+                    </div>
+                    <div id="groupAlignMenu" class="modeRight2" style="z-index: 9">
+                        <div class="modeRightMiddle" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">水平对齐</span></div>
+                        <div class="modeTopMiddle" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">垂直对齐</span></div>
+                    </div>
+
+                    <div id="containerMangeMenu" class="modeRight2" style="z-index: 9">
+                        <div class="modeRightDel" onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">拆分</span></div>
+                    </div>
+                    <textarea onkeydown="if(event.keyCode==13)this.blur();"
+                              style="display:none;width: 60px;position: absolute;z-index: 9" id="deviceText"></textarea>
+                    <canvas id="drawCanvas" class="mapContext">
+                        您的浏览器不支持HTML5!
+                    </canvas>
+                </div>
+            </div>
+            <div class="layui-col-md2">
+                <p style="text-align: center;font-size: 20px;padding-top: 50%;">其他信息:</p>
+                <p style="text-align: center;font-size: 20px;">比如结合highcharts放一些节点联动的图表信息</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="loading">正在处理...</div>
+
+</body>
+
+<!-- js of 3rd party  -->
+<script src="static/jquery-3.3.1/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="static/layui-2.3.0/layui.all.js" type="text/javascript"></script>
+<!-- util.js must be import before jtopo-0.4.8-dev.js -->
+<script src="static/public/js/util.js" type="text/javascript"></script>
+<!-- js of this project  -->
+<script src="static/jtopo-0.4.8/jtopo-0.4.8-dev.js" type="text/javascript"></script>
+<script src="static/public/js/jtopo-editor.js" type="text/javascript"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        var element = layui.element;
+    });
+
+    // todo...节点名字加载器(节点搜索用)
+    // var nodeNamesloader = function (param, success, error) {
+    //     //获取输入的值
+    //     var q = param.q || "";
+    //     //此处q的length代表输入多少个字符后开始查询
+    //     if (q.length <= 0) return false;
+    //     var nodes = editor.stage.find('node[elementType="node"]');
+    //     var items = $.map(nodes, function (item, index) {
+    //         if (item.text && item.text.indexOf(q) != -1) {
+    //             return {
+    //                 "nodeId": index,
+    //                 "nodeName": item.text
+    //             };
+    //         }
+    //     });
+    //     success(items);
+    // };
+
+    $(document).ready(function () {
+        $("#simpleLine").click(function () {
+            $(this).css("background-color", "darkgray");
+            $("#foldLineH").css("background-color", "white");
+            $("#foldLineV").css("background-color", "white");
+            $("#flexLineH").css("background-color", "white");
+            $("#flexLineV").css("background-color", "white");
+        });
+        $("#foldLineH").click(function () {
+            $(this).css("background-color", "darkgray");
+            $("#simpleLine").css("background-color", "white");
+            $("#foldLineV").css("background-color", "white");
+            $("#flexLineH").css("background-color", "white");
+            $("#flexLineV").css("background-color", "white");
+        });
+        $("#foldLineV").click(function () {
+            $(this).css("background-color", "darkgray");
+            $("#simpleLine").css("background-color", "white");
+            $("#foldLineH").css("background-color", "white");
+            $("#flexLineH").css("background-color", "white");
+            $("#flexLineV").css("background-color", "white");
+        });
+        $("#flexLineH").click(function () {
+            $(this).css("background-color", "darkgray");
+            $("#simpleLine").css("background-color", "white");
+            $("#foldLineH").css("background-color", "white");
+            $("#foldLineV").css("background-color", "white");
+            $("#flexLineV").css("background-color", "white");
+        });
+        $("#flexLineV").click(function () {
+            $(this).css("background-color", "darkgray");
+            $("#simpleLine").css("background-color", "white");
+            $("#foldLineH").css("background-color", "white");
+            $("#foldLineV").css("background-color", "white");
+            $("#flexLineH").css("background-color", "white");
+        });
+
+        var modes = jQuery("[divType='mode']");
+        var modeLength = modes.length;
+
+        for (var i = 0; i < modeLength; i++) {
+            modes[i].gtype = modes[i].getAttribute("gtype");
+            modes[i].datatype = modes[i].getAttribute("datatype");
+            var text = $(modes[i]).find("span").eq(0).text();
+            editor.drag(modes[i], document.getElementById('drawCanvas'), text);
+        }
+        //加载网络拓扑图
+        editor.loadTopology('${topologyId}', "images/backimg.png");
+
+        // 更新当前拓扑图结构(调用方式)
+        // editor.replaceStage(editor.templateId, editor.topologyId, false, this.value);
+
+        //搜索设备节点候选框 todo...不用easyui的combobox
+        // $('#queryText').combobox({
+        //     loader: nodeNamesloader,
+        //     mode: 'remote',
+        //     valueField: 'nodeId',
+        //     textField: 'nodeName',
+        //     onSelect: function (record) {
+        //         //查该选中的设备节点
+        //         editor.utils.findNodeAndFlash(record.nodeName);
+        //     }
+        // });
+    });
+
+</script>
+</html>
