@@ -111,7 +111,7 @@
                                                  draggable="false"
                                                  onclick="editor.lineType='curveLine'">
                                                 <img class="link-icon-style" id="link-curveline"
-                                                     src="static/public/img/flexline_vertical.png"/>
+                                                     src="static/public/img/curveline.png"/>
                                                 <br><span>曲线</span>
                                             </div>
                                         </td>
@@ -299,8 +299,13 @@
                 </div>
             </div>
             <div class="layui-col-md8">
-                <div id="topology-body" class="topology-context" style="height:900px;">
+                <div id="topology-body" class="topology-context">
                     <div id="node-menu" class="right-click-menu" style="z-index: 9">
+                        <div class="fa fa-wrench menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>节点设置</span>
+                        </div>
                         <div class="fa fa-th-large menu-item"
                              onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
@@ -423,6 +428,11 @@
                     <div id="line-menu" class="right-click-menu" style="z-index: 9">
                         <!--<div class="modeRightEdit" onMouseMove="this.style.backgroundColor='#c5e7f6'"-->
                         <!--onMouseOut="this.style.backgroundColor=''"><span class="menuSpan">添加描述</span></div>-->
+                        <div class="fa fa-wrench menu-item"
+                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
+                             onMouseOut="this.style.backgroundColor=''">
+                            <span>连线设置</span>
+                        </div>
                         <div class="fa fa-times menu-item"
                              onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
@@ -527,7 +537,7 @@
         </div>
     </div>
 </div>
-<div id="loading">正在处理...</div>
+<!--<div id="loading">正在处理...</div>-->
 
 </body>
 
@@ -543,6 +553,9 @@
     layui.use('element', function () {
         var element = layui.element;
     });
+    // 设置canvas画布大小
+    var canvas=document.getElementById("topology-canvas");
+    canvas.height = $(window).height() - $('.layui-header').height();
 
     // todo...节点名字加载器(节点搜索用)
     // var nodeNamesloader = function (param, success, error) {

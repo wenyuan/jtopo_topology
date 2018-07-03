@@ -236,6 +236,9 @@ TopologyEditor.prototype.initMenus = function () {
             editor.utils.saveNodeInitState();
         }
         switch (text) {
+            case "节点设置":
+                alert('节点设置');
+                break;
             case "放大(Shift+)":
                 self.utils.scalingBig();
                 self.utils.saveNodeNewState();
@@ -666,7 +669,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                 }).show();
             }
 
-        } else if (event.button === 1) {//中键
+        } else if (event.button === 1) {          // 中键
 
         } else if (event.button === 0) {          // 左键松开事件
             if (event.target != null && event.target instanceof JTopo.Node && !self.isSelectedMode) {
@@ -902,7 +905,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                     //return false;
                     break;
                 case  87:
-                    jAlert("ctrl + w 另存为");
+                    alert("ctrl + w 另存为");
                     //return false;
                     break;
                 case  89:
@@ -1365,7 +1368,7 @@ editor.utils = {
             // 闪烁几下
             nodeFlash(node, 6);
         } else {
-            jAlert("没有找到该节点,请输入完整的节点名称!")
+            alert("没有找到该节点,请输入完整的节点名称!")
         }
     },
     // hasUnSavedNode: function () {
@@ -1399,7 +1402,7 @@ editor.utils = {
                 }
             });
         });
-    },
+    }
     //查找是否当前层已经有子网保存
     // hasSavedSubnet: function () {
     //     var saved = false;

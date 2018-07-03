@@ -5,13 +5,7 @@
   "data": {
     "version": "0.4.8",
     "wheelZoom": "0.95",
-    "deviceNum": "18",
-    "width": "1098",
-    "height": "671",
     "id": "ST172.19.105.52015100809430700001",
-    "topoLevel": "1",
-    "parentLevel": "0",
-    "nextLevel": "0",
     "childs": [
       {
         "id": "S172.19.105.52015100809430700002",
@@ -20,10 +14,6 @@
         "translateY": "20",
         "scaleX": "1",
         "scaleY": "1",
-        "totalLevel": "1",
-        "parentLevel": "0",
-        "nextLevel": "0",
-        "topoLevel": "1",
         "childs": [
           {
             "id": "L172.19.105.52015100811153300001",
@@ -39,9 +29,6 @@
             "deviceA": "1136300297928.587",
             "deviceZ": "1406176935353.6848",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -58,9 +45,6 @@
             "deviceA": "1394105924967.951",
             "deviceZ": "1136300297928.587",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -77,9 +61,6 @@
             "deviceA": "564241624829.4331",
             "deviceZ": "318016674603.1266",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -96,9 +77,6 @@
             "deviceA": "1062340763210.1544",
             "deviceZ": "564241624829.4331",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -115,9 +93,6 @@
             "deviceA": "564241624829.4331",
             "deviceZ": "488323736331.2087",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -134,9 +109,6 @@
             "deviceA": "564241624829.4331",
             "deviceZ": "827722371280.0199",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -153,9 +125,6 @@
             "deviceA": "564241624829.4331",
             "deviceZ": "1045863334277.662",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -172,9 +141,6 @@
             "deviceA": "1262070648024.5728",
             "deviceZ": "564241624829.4331",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -191,9 +157,6 @@
             "deviceA": "1262070648024.5728",
             "deviceZ": "1136300297928.587",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -210,9 +173,6 @@
             "deviceA": "253209434749.73596",
             "deviceZ": "564241624829.4331",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -229,9 +189,6 @@
             "deviceA": "253209434749.73596",
             "deviceZ": "1136300297928.587",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -248,9 +205,6 @@
             "deviceA": "520008948580.8119",
             "deviceZ": "564241624829.4331",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -267,9 +221,6 @@
             "deviceA": "520008948580.8119",
             "deviceZ": "1136300297928.587",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -286,9 +237,6 @@
             "deviceA": "809054608657.865",
             "deviceZ": "1394105924967.951",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -305,9 +253,6 @@
             "deviceA": "1250687739831.9912",
             "deviceZ": "1062340763210.1544",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -324,9 +269,6 @@
             "deviceA": "564241624829.4331",
             "deviceZ": "597645745716.1871",
             "lineType": "line",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "2"
           },
           {
@@ -345,9 +287,6 @@
             "dataType": "EC",
             "nodeImage": "icon_switcher.png",
             "templateId": "NK172.19.105.52015100809464700001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -366,9 +305,6 @@
             "dataType": "VR",
             "nodeImage": "icon_router.png",
             "templateId": "RT172.19.105.52015100811241800001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -387,9 +323,6 @@
             "dataType": "VM",
             "nodeImage": "icon_client.png",
             "templateId": "VT172.19.105.52015100910413200001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -408,9 +341,6 @@
             "dataType": "EC",
             "nodeImage": "icon_switcher.png",
             "templateId": "NK172.19.105.52015100810295700001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -429,9 +359,6 @@
             "dataType": "VM",
             "nodeImage": "icon_virtual_host.png",
             "templateId": "VT172.19.105.52015100810320100001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -450,9 +377,6 @@
             "dataType": "VM",
             "nodeImage": "icon_client.png",
             "templateId": "VT172.19.105.52015100810402700001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -471,9 +395,6 @@
             "dataType": "VM",
             "nodeImage": "icon_server.png",
             "templateId": "VT172.19.105.52015100810461200001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -492,9 +413,6 @@
             "dataType": "VM",
             "nodeImage": "icon_server.png",
             "templateId": "VT172.19.105.52015100810485100001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -513,9 +431,6 @@
             "dataType": "ECVR",
             "nodeImage": "icon_route_controller.png",
             "templateId": "RT172.19.105.52015100810523500001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -534,9 +449,6 @@
             "dataType": "VR",
             "nodeImage": "icon_router.png",
             "templateId": "RT172.19.105.52015100811281200001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -555,9 +467,6 @@
             "dataType": "ECVR",
             "nodeImage": "icon_route_controller.png",
             "templateId": "RT172.19.105.52015100811163200001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -576,9 +485,6 @@
             "dataType": "ECVR",
             "nodeImage": "icon_route_controller.png",
             "templateId": "RT172.19.105.52015100811204100001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -597,9 +503,6 @@
             "dataType": "FW",
             "nodeImage": "icon_firewall.png",
             "templateId": "undefined",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -618,9 +521,6 @@
             "dataType": "FW",
             "nodeImage": "icon_firewall.png",
             "templateId": "undefined",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           },
           {
@@ -639,9 +539,6 @@
             "dataType": "VM",
             "nodeImage": "icon_client.png",
             "templateId": "VT172.19.105.52015100911045400001",
-            "topoLevel": "1",
-            "parentLevel": "0",
-            "nextLevel": "0",
             "zindex": "3"
           }
         ]
