@@ -42,8 +42,6 @@ TopologyPanel.prototype.saveToplogy = function () {
     editor.mainMenu.hide();
     var self = this;
     // this.showLoadingWindow();
-    //先删除标尺线
-    editor.utils.clearRuleLines();
     //保存container状态
     var containers = editor.utils.getContainers();
     for (var c = 0; c < containers.length; c++) {
@@ -51,7 +49,7 @@ TopologyPanel.prototype.saveToplogy = function () {
         var nodes = containers[c].childs;
         for (var n = 0; n < nodes.length; n++) {
             if (nodes[n] instanceof JTopo.Node) {
-                temp.push(nodes[n].node_id);
+                temp.push(nodes[n].nodeId);
             }
         }
         containers[c].childNodes = temp.join(",");
@@ -78,6 +76,7 @@ TopologyPanel.prototype.saveToplogy = function () {
                 console.error(response.msg);
             } else {
                 alert(response.msg);
+                editor.stageMode = 'normal';
                 self.replaceStage(editor.topologyId);
                 // self.closeLoadingWindow();
             }
@@ -116,7 +115,7 @@ TopologyPanel.prototype.loadTopology = function (topologyId, backImg) {
                 editor.init(topologyId, backImg, "-1", "");
             } else {
                 // 拓扑存在,渲染拓扑图
-                var topologyJson = response.data;
+                var topologyJson = response.data.topology_json;
                 editor.init(topologyId, backImg, topologyJson, "");
             }
         }
@@ -176,6 +175,8 @@ function TopologyEditor() {
     // 绘图区属性
     this.stage = null;
     this.scene = null;
+    // 当前模式
+    this.stageMode = 'normal';
     // 默认连线类型
     this.lineType = "line";
     // 当前选择的节点对象
@@ -197,10 +198,6 @@ function TopologyEditor() {
     this.alignGroup = $("#align-group");
     // 分组的容器管理菜单
     this.containerMangeMenu = $("#container-mange-menu");
-    // 是否显示参考线
-    this.showRuleLine =true;
-    // 标尺线数组
-    this.ruleLines = [];
     // 调用构造函数,继承TopologyPanel类
     TopologyPanel.call(this);
 }
@@ -237,7 +234,18 @@ TopologyEditor.prototype.initMenus = function () {
         }
         switch (text) {
             case "节点设置":
-                alert('节点设置');
+                alert('节点设置,模拟数据,可以通过dialog对话框传递数据');
+                // todo...此处的params主要是node携带的信息,用于后台查数据时进行dsl过滤
+                var params = {'key1': 'value1', 'key2': 'value2'};
+                var paramsStr = '{';
+                for (var key in params) {
+                    paramsStr = paramsStr + '"' + key + '"' + ':"' + params[key] + '",'
+                }
+                paramsStr = paramsStr.substr(0, paramsStr.length - 1) + '}';
+                var nodeParams = [];
+                nodeParams[0] = paramsStr;
+                self.currentNode['nodeParams'] = nodeParams;
+                self.utils.saveNodeNewState();
                 break;
             case "放大(Shift+)":
                 self.utils.scalingBig();
@@ -385,6 +393,9 @@ TopologyEditor.prototype.initMenus = function () {
             // case "添加描述":
             //     editor.utils.addNodeText(this.style.left, this.style.top);
             //     break;
+            case "连线设置":
+                alert('连线设置');
+                break;
             case "删除连线":
                 editor.utils.deleteLine();
                 break;
@@ -394,19 +405,8 @@ TopologyEditor.prototype.initMenus = function () {
 
     // 系统设置菜单
     self.mainMenu.on("click", function (event) {
-        //关闭菜单
+        // 关闭菜单
         $(this).hide();
-        var text = $.trim($(event.target).text());
-        if (text.indexOf("参考线") !== -1) {
-            if (editor.showRuleLine) {
-                editor.showRuleLine = false;
-                $("#ruleLineSpan").text("显示参考线");
-            }
-            else {
-                editor.showRuleLine = true;
-                $("#ruleLineSpan").text("隐藏参考线");
-            }
-        }
     });
 
     // 节点分组菜单
@@ -425,7 +425,7 @@ TopologyEditor.prototype.initMenus = function () {
         $(this).hide();
         var text = $.trim($(event.target).text());
         selectedNodes.forEach(function (n) {
-            if (n.node_id == currNode.node_id) return true;
+            if (n.nodeId == currNode.nodeId) return true;
             if (text === "水平对齐") {
                 n.y = currNode.y;
             } else if (text === "垂直对齐") {
@@ -551,7 +551,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
     this.stage.frames = this.config.stageFrames;       // 设置当前舞台播放的帧数/秒
     this.stage.wheelZoom = this.config.defaultScal;    // 鼠标滚轮缩放操作比例
     this.stage.eagleEye.visible = this.config.eagleEyeVsibleDefault;    // 是否开启鹰眼
-    this.scene.mode = "edit";
+    this.stage.mode = this.stageMode;
     // 设置舞台模式
     // 背景由样式指定
     // this.scene.background = backImg;
@@ -566,7 +566,39 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
 
     // 初始化菜单
     this.initMenus();
-    // 双击编辑文字
+
+    // 鼠标单击节点事件
+    this.scene.click(function (event) {
+        if (event.target) {
+            self.currentNode = event.target;
+        }
+        else {
+            // 单击舞台空白处
+            $('.node-infobox').css('display', 'none');
+            return
+        }
+        // 单击某个节点
+        if (event.target != null && event.target instanceof JTopo.Node && editor.stageMode !== 'edit') {
+            $('.node-infobox label[name=node_name]').html(event.target.text);
+            $('.node-infobox label[name=current_time]').html(new Date().toLocaleTimeString());
+            // 记录鼠标触发位置在canvas中的相对位置
+            // todo...这里要有一个算法算一下边界时候的显示位置
+            var menuY = event.layerY ? event.layerY : event.offsetY;
+            var menuX = event.layerX ? event.layerX : event.offsetX;
+            $('.node-infobox').css({
+                'display': 'block',
+                'top': menuY,
+                'left': menuX,
+                'cursor': 'pointer'
+            });
+        } else {
+            // 单击连线
+            $('.node-infobox').css('display', 'none');
+        }
+    });
+
+
+    // 双击事件
     this.scene.dbclick(function (event) {
         if (event.target)
             self.currentNode = event.target;
@@ -603,7 +635,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
             self.currentNode = event.target;
         if (event.target && event.target instanceof JTopo.Node && event.target.layout && event.target.layout.on && event.target.layout.type && event.target.layout.type !== "auto")
             JTopo.layout.layoutNode(this, event.target, true, event);
-        if (event.button === 2) {//右键菜单
+        if (event.button === 2) {                      // 右键菜单
             $("div[id$='-menu']").hide();
             var menuY = event.layerY ? event.layerY : event.offsetY;
             var menuX = event.layerX ? event.layerX : event.offsetX;
@@ -640,15 +672,6 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                             left: menuX
                         }).show();
                     }
-                } else if (event.target instanceof JTopo.Link) {//连线右键菜单
-                    if (event.target.lineType == "rule") {
-                        editor.utils.hideRuleLines();//删除标尺线
-                    } else {
-                        self.lineMenu.css({
-                            top: event.layerY ? event.layerY : event.offsetY,
-                            left: event.layerX ? event.layerX : event.offsetX
-                        }).show();
-                    }
                 } else if (event.target instanceof JTopo.Container) {//容器右键菜单
                     self.containerMangeMenu.css({
                         top: event.layerY ? event.layerY : event.offsetY,
@@ -672,7 +695,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
         } else if (event.button === 1) {          // 中键
 
         } else if (event.button === 0) {          // 左键松开事件
-            if (event.target != null && event.target instanceof JTopo.Node && !self.isSelectedMode) {
+            if (event.target != null && event.target instanceof JTopo.Node && !self.isSelectedMode && editor.stageMode === 'edit') {
                 if (self.beginNode == null) {
                     // 在起始节点处松开鼠标,创建动态的线条(临时节点A-Z)
                     self.beginNode = event.target;
@@ -748,8 +771,8 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                         link.lineType = "curveLine";
                     }
                     // 保存线条所连接的两个节点ID
-                    link.deviceA = self.beginNode.node_id;
-                    link.deviceZ = endNode.node_id;
+                    link.nodeSrc = self.beginNode.nodeId;
+                    link.nodeDst = endNode.nodeId;
                     if (self.lineType !== "curveLine")
                         link.arrowsRadius = self.config.arrowsRadius;
                     link.strokeColor = self.config.strokeColor;
@@ -782,7 +805,6 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
 
     // 单击编辑器隐藏右键菜单
     this.stage.click(function (event) {
-        editor.utils.hideRuleLines();
         if (event.button === 0) {
             // 关闭弹出菜单（div）
             $("div[id$='-menu']").hide();
@@ -791,8 +813,6 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
 
     // 鼠标移出舞台
     this.stage.mouseout(function (event) {
-        // 清空标尺线
-        editor.utils.hideRuleLines();
         // 删掉节点带出来的连线
         if (self.link && !self.isSelectedMode && (event.target == null || event.target === self.beginNode || event.target === self.link)) {
             self.scene.remove(self.link);
@@ -867,11 +887,6 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                         editor.utils.rotateSub();
                         editor.utils.saveNodeNewState();
                     }
-                    //return false;
-                    break;
-                case  76:
-                    //shift+L 参考线
-                    editor.showRuleLine = !editor.showRuleLine;
                     //return false;
                     break;
                 case  67:
@@ -957,10 +972,10 @@ TopologyEditor.prototype.drag = function (modeDiv, drawArea, text) {
         var dragSrc = this;
         var backImg = $(dragSrc).find("img").eq(0).attr("src");
         backImg = backImg.substring(backImg.lastIndexOf('/') + 1);
-        var nodetype = $(this).attr("nodetype");
+        var nodeType = $(this).attr("topo-nodetype");
         try {
             //IE只允许KEY为text和URL
-            event.dataTransfer.setData('text', backImg + ";" + text + ";" + nodetype);
+            event.dataTransfer.setData('text', backImg + ";" + text + ";" + nodeType);
         } catch (ex) {
             console.log(ex);
         }
@@ -974,13 +989,13 @@ TopologyEditor.prototype.drag = function (modeDiv, drawArea, text) {
     drawArea.ondrop = function (event) {
         event = event || window.event;
         var data = event.dataTransfer.getData("text");
-        var img, text, nodetype;
+        var img, text, nodeType;
         if (data) {
             var datas = data.split(";");
             if (datas && datas.length === 3) {
                 img = datas[0];
                 text = datas[1];
-                nodetype = datas[2];
+                nodeType = datas[2];
                 var node = new JTopo.Node();
                 node.fontColor = self.config.nodeFontColor;
                 // 节点坐标
@@ -988,8 +1003,9 @@ TopologyEditor.prototype.drag = function (modeDiv, drawArea, text) {
                 // 节点图片
                 node.setImage(topoImgPath + img);
                 // 节点数据
-                node.node_id = generateUUID();
-                node.nodetype = nodetype;
+                node.nodeId = generateUUID();
+                node.nodeType = nodeType;
+                node.text = text;
                 node.nodeImage = img;
                 self.scene.add(node);
                 self.currentNode = node;
@@ -1012,59 +1028,8 @@ editor.utils = {
                 selectedNodes.push(n);
         }), selectedNodes;
     },
-    // //获取标尺线对象
-    // getRuleLines: function () {
-    //     var ruleLines = [];
-    //     editor.stage.childs.forEach(function (s) {
-    //         s.childs.forEach(function (n) {
-    //             if (n.elementType === "link" && n.lineType == "rule")
-    //                 ruleLines.push(n);
-    //         });
-    //     });
-    //     return ruleLines;
-    // },
-    // 删除标尺线
-    clearRuleLines: function () {
-        for (var i = 0; i < editor.ruleLines.length; i++) {
-            editor.scene.remove(editor.ruleLines[i]);
-        }
-        editor.ruleLines = [];
-        return this;
-    },
-    // // 重新创建标尺线对象
-    // reCreateRuleLines: function () {
-    //     if (editor.ruleLines && editor.ruleLines.length == 2) {
-    //         editor.scene.add(editor.ruleLines[0]);
-    //         editor.scene.add(editor.ruleLines[1]);
-    //     }
-    //     return this;
-    // },
-    // 显示标尺线
-    showRuleLines: function (x, y) {
-        if (editor.ruleLines && editor.ruleLines.length == 2) {
-            editor.ruleLines[0].visible = true;
-            editor.ruleLines[1].visible = true;
-            /* editor.ruleLines[0].nodeA.setLocation(0 - editor.scene.translateX, y );
-             editor.ruleLines[0].nodeZ.setLocation(JTopo.stage.width - editor.scene.translateX,y);
-             editor.ruleLines[1].nodeA.setLocation(x,0 - editor.scene.translateY);
-             editor.ruleLines[1].nodeZ.setLocation(x,JTopo.stage.height - editor.scene.translateY);*/
-            editor.ruleLines[0].nodeA.y = y;
-            editor.ruleLines[0].nodeZ.y = y;
-            editor.ruleLines[1].nodeA.x = x;
-            editor.ruleLines[1].nodeZ.x = x;
-        }
-        return this;
-    },
-    // 隐藏标尺线
-    hideRuleLines: function () {
-        if (editor.ruleLines && editor.ruleLines.length == 2) {
-            editor.ruleLines[0].visible = false;
-            editor.ruleLines[1].visible = false;
-        }
-        return this;
-    },
     // 节点分组合并
-    toMerge : function(){
+    toMerge: function () {
         var selectedNodes = this.getSelectedNodes();
         // 不指定布局的时候,容器的布局为自动(容器边界随元素变化）
         var container = new JTopo.Container();
@@ -1073,13 +1038,13 @@ editor.utils = {
         container.borderColor = editor.config.borderColor;
         container.borderRadius = editor.config.borderRadius;
         editor.scene.add(container);
-        selectedNodes.forEach(function(n){
+        selectedNodes.forEach(function (n) {
             container.add(n);
         });
     },
     // 分组拆除
-    toSplit : function(){
-        if(editor.currentNode instanceof  JTopo.Container){
+    toSplit: function () {
+        if (editor.currentNode instanceof JTopo.Container) {
             editor.currentNode.removeAll();
             editor.scene.remove(editor.currentNode);
         }
@@ -1155,10 +1120,10 @@ editor.utils = {
     },
     // 拓扑图预览
     showPic: function () {
-        if (editor.ruleLines && editor.ruleLines.length > 0) {
-            this.clearRuleLines();
-        }
         editor.stage.saveImageInfo();
+    },
+    editTopology: function () {
+        editor.stageMode = 'edit'
     },
     // 复制节点
     cloneNode: function (n) {
@@ -1169,7 +1134,7 @@ editor.utils = {
                 // if (i == "templateId" && n.dataType != "VM") return true;
                 newNode[i] = n[i];
             });
-            newNode.node_id = generateUUID();
+            newNode.nodeId = generateUUID();
             newNode.alpha = editor.config.alpha;
             newNode.strokeColor = editor.config.nodeStrokeColor;
             newNode.fillColor = editor.config.nodefillColor;
@@ -1240,45 +1205,7 @@ editor.utils = {
     //     if (editor.currentNode instanceof JTopo.Node)
     //         editor.currentNode.restore();
     // },
-    // 创建标尺线
-    createRuleLines: function (x, y) {
-        if (editor.showRuleLine) {
-            //新建两条定点连线
-            if (editor.ruleLines.length == 0) {
-                var nodeHA = new JTopo.Node(), nodeHZ = new JTopo.Node();
-                /* nodeHA.setLocation(0 - editor.scene.translateX, y );
-                 nodeHZ.setLocation(JTopo.stage.width - editor.scene.translateX,y);*/
-                nodeHA.setLocation(JTopo.stage.width * -2, y);
-                nodeHZ.setLocation(JTopo.stage.width * 2, y);
-                nodeHA.setSize(1, 1);
-                nodeHZ.setSize(1, 1);
-                var nodeVA = new JTopo.Node(), nodeVZ = new JTopo.Node();
-                /*  nodeVA.setLocation(x,0 - editor.scene.translateY);
-                  nodeVZ.setLocation(x,JTopo.stage.height - editor.scene.translateY); */
-                nodeVA.setLocation(x, JTopo.stage.height * -2);
-                nodeVZ.setLocation(x, JTopo.stage.width * 2);
-                nodeVA.setSize(1, 1);
-                nodeVZ.setSize(1, 1);
-                var linkH = new JTopo.Link(nodeHA, nodeHZ);
-                var linkV = new JTopo.Link(nodeVA, nodeVZ);
-                linkH.lineType = "rule";
-                linkV.lineType = "rule";
-                linkH.lineWidth = 1; // 线宽
-                linkH.dashedPattern = 2; // 虚线
-                linkV.lineWidth = 1; // 线宽
-                linkV.dashedPattern = 2; // 虚线
-                linkH.strokeColor = "255,0,0";
-                linkV.strokeColor = "0,255,0";
-                //保存标尺线
-                editor.ruleLines.push(linkH);
-                editor.ruleLines.push(linkV);
-                editor.scene.add(linkH);
-                editor.scene.add(linkV);
-            } else {
-                editor.utils.showRuleLines(x, y);
-            }
-        }
-    },
+
     // 获取所有的容器对象
     getContainers: function () {
         var containers = [];
@@ -1358,7 +1285,8 @@ editor.utils = {
                 if (n == 0) {
                     //self.unSelectAllNodeExcept(node);
                     return;
-                };
+                }
+                ;
                 node.selected = !node.selected;
                 setTimeout(function () {
                     nodeFlash(node, n - 1);
@@ -1397,7 +1325,7 @@ editor.utils = {
         editor.stage.childs.forEach(function (s) {
             s.childs.forEach(function (n) {
                 //id属性无有效值，说明该节点没有保存到数据库
-                if (n.node_id != node.node_id) {
+                if (n.nodeId != node.nodeId) {
                     n.selected = false;
                 }
             });

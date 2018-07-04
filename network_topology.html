@@ -21,6 +21,8 @@
         <div class="layui-nav layui-layout-right">
             <input class="layui-input" id="queryText" style="display: inline-block;width: 150px;height: 25px;"
                    placeholder="todo...节点搜索功能" onclick="alert('该功能暂时还未实现')">
+            <i class="fa fa-pencil-square-o toolbar-icon" aria-hidden="true" title="编辑"
+               onClick="editor.utils.editTopology()"></i>
             <i class="fa fa-arrows toolbar-icon" aria-hidden="true" title="全屏查看"
                onClick="editor.utils.showInFullScreen(editor.stage.canvas,'RequestFullScreen')"></i>
             <i class="fa fa-align-center toolbar-icon" aria-hidden="true" title="居中显示"
@@ -476,11 +478,6 @@
                              onMouseOut="this.style.backgroundColor=''">
                             <span>保存(Shift+S)</span>
                         </div>
-                        <div class="fa fa-calendar-plus-o menu-item"
-                             onMouseMove="this.style.backgroundColor='#c5e7f6'"
-                             onMouseOut="this.style.backgroundColor=''">
-                            <span id="ruleLineSpan">隐藏参考线(Shift+L)</span>
-                        </div>
                         <div class="fa fa-question-circle menu-item" onclick="alert('帮助文档')"
                              onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
@@ -525,6 +522,12 @@
                             <span>拆分</span>
                         </div>
                     </div>
+
+                    <!-- 鼠标悬浮显示节点信息 -->
+                    <div class="node-infobox" style="display: none;">
+                        <span>节点名称：<label name="node_name"></label></span>
+                        <span>当前时间：<label name="current_time"></label></span>
+                    </div>
                     <canvas class="topology-context" id="topology-canvas">
                         您的浏览器不支持HTML5!
                     </canvas>
@@ -550,11 +553,13 @@
 <script src="static/jtopo-0.4.8/jtopo-0.4.8-dev.js" type="text/javascript"></script>
 <script src="static/public/js/jtopo-editor.js" type="text/javascript"></script>
 <script type="text/javascript">
-    layui.use('element', function () {
+    layui.use(["element", "form", "layer"], function () {
         var element = layui.element;
+        var form = layui.form;
+        var layer = layui.layer;
     });
     // 设置canvas画布大小
-    var canvas=document.getElementById("topology-canvas");
+    var canvas = document.getElementById("topology-canvas");
     canvas.height = $(window).height() - $('.layui-header').height();
 
     // todo...节点名字加载器(节点搜索用)
@@ -630,7 +635,7 @@
         var nodes = $("[topo-div-type='topo-node']");
         var nodeLength = nodes.length;
         for (var i = 0; i < nodeLength; i++) {
-            nodes[i].nodetype = nodes[i].getAttribute("topo-nodetype");
+            nodes[i].nodeType = nodes[i].getAttribute("topo-nodetype");
             var text = $(nodes[i]).find("span").eq(0).text();
             editor.drag(nodes[i], document.getElementById('topology-canvas'), text);
         }

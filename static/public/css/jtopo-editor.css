@@ -226,3 +226,27 @@
     margin-left: 5px;
     font-size: 16px;
 }
+
+/********** 节点悬浮信息 **********/
+.node-infobox {
+    font-size: 12px;
+    width: 130px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    position: absolute;
+    background-color: #ffffff;
+    padding: 6px;
+    box-shadow: 2px 2px 2px #888888, -1px -1px 2px #888888, 1px -1px 2px #888888, 1px 2px 2px #888888;
+    z-index: 999;
+    opacity: 0.8;
+}
+
+.node-infobox span {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.node-infobox span label {
+    margin-right: 4px;
+    font-size: 12px;
+}

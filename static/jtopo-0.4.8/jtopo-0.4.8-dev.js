@@ -2,7 +2,7 @@
     function (window) {
         function Element() {
             this.initialize = function () {
-                this.elementType = "element", this.serializedProperties = ["elementType", "id", "topoLevel"], this.propertiesStack = [], this.id = ""
+                this.elementType = "element", this.serializedProperties = ["elementType", "id"], this.propertiesStack = [], this.id = ""
             }, this.distroy = function () {
             }, this.removeHandler = function () {
             }, this.attr = function (a, b) {
@@ -176,12 +176,12 @@
                         if ("link" == d) {
                             var nodeA, nodeZ;
                             //找出连接点
-                            if (a["deviceA"] && a["deviceZ"]) {
+                            if (a["nodeSrc"] && a["nodeDst"]) {
                                 nodes.forEach(function (nodeEle) {
                                     if (nodeEle.elementType == "node") {
-                                        if (nodeEle.deviceId == a["deviceA"])
+                                        if (nodeEle.nodeId == a["nodeSrc"])
                                             nodeA = nodeEle;
-                                        if (nodeEle.deviceId == a["deviceZ"])
+                                        if (nodeEle.nodeId == a["nodeDst"])
                                             nodeZ = nodeEle;
                                     }
                                 });
@@ -231,7 +231,7 @@
                                     c.shadowOffsetY = editor.config.shadowOffsetY;
                                     for (var ni = 0; ni < temp.length; ni++) {
                                         b.childs.forEach(function (n) {
-                                            if (n instanceof JTopo.Node && n.deviceId == temp[ni]) {
+                                            if (n instanceof JTopo.Node && n.nodeId == temp[ni]) {
                                                 c.add(n);
                                             }
                                         });
@@ -349,12 +349,12 @@
                         if ("link" == d) {
                             var nodeA, nodeZ;
                             //找出连接点
-                            if (a["deviceA"] && a["deviceZ"]) {
+                            if (a["nodeSrc"] && a["nodeDst"]) {
                                 nodes.forEach(function (nodeEle) {
                                     if (nodeEle.elementType == "node") {
-                                        if (nodeEle.deviceId == a["deviceA"])
+                                        if (nodeEle.nodeId == a["nodeSrc"])
                                             nodeA = nodeEle;
-                                        if (nodeEle.deviceId == a["deviceZ"])
+                                        if (nodeEle.nodeId == a["nodeDst"])
                                             nodeZ = nodeEle;
                                     }
                                 });
@@ -404,7 +404,7 @@
                                     c.shadowOffsetY = editor.config.shadowOffsetY;
                                     for (var ni = 0; ni < temp.length; ni++) {
                                         b.childs.forEach(function (n) {
-                                            if (n instanceof JTopo.Node && n.deviceId == temp[ni]) {
+                                            if (n instanceof JTopo.Node && n.nodeId == temp[ni]) {
                                                 c.add(n);
                                             }
                                         });
@@ -936,7 +936,7 @@
 
             //Stage对象初始化方法，初始化画布，画图对象和初始状态
             this.initialize = function (c) {
-                initJtopoEvent(c), this.canvas = c, this.id = "", this.graphics = c.getContext("2d"), this.childs = [], this.frames = 24, this.messageBus = new JTopo.util.MessageBus, this.eagleEye = eagleEye(this), this.wheelZoom = null, this.mouseDownX = 0, this.mouseDownY = 0, this.mouseDown = !1, this.mouseOver = !1, this.needRepaint = !0, this.serializedProperties = ["wheelZoom", "width", "height", "id", "totalLevel", "topoLevel"]
+                initJtopoEvent(c), this.canvas = c, this.id = "", this.graphics = c.getContext("2d"), this.childs = [], this.frames = 24, this.messageBus = new JTopo.util.MessageBus, this.eagleEye = eagleEye(this), this.wheelZoom = null, this.mouseDownX = 0, this.mouseDownY = 0, this.mouseDown = !1, this.mouseOver = !1, this.needRepaint = !0, this.serializedProperties = ["wheelZoom", "width", "height", "id"]
             }, null != c && this.initialize(c);
 
             var o = !0,
@@ -1039,7 +1039,7 @@
             }, this.toJson = function () {
                 {
                     var b = this,
-                        c = '{"version":"' + JTopo.version + '","deviceNum":"' + editor.modeIdIndex + '",';
+                        c = '{"version":"' + JTopo.version + '",';
                     this.serializedProperties.length
                 }
                 return this.serializedProperties.forEach(function (a) {
@@ -1592,8 +1592,8 @@
                 if (null == this.selectedPoint) {
                     var b = this.selectedLocation.x + a.dx,
                         c = this.selectedLocation.y + a.dy;
-                    //画标尺线
-                    editor.utils.createRuleLines(b + this.width / 2, c + this.height / 2);
+                    //画标尺线 todo...有什么用?
+                    // editor.utils.createRuleLines(b + this.width / 2, c + this.height / 2);
                     //应用自动布局
                     if (this.layout && this.layout.on && this.layout.type == "auto")
                         JTopo.layout.layoutNode(JTopo.stage.childs[0], this, true, a);
@@ -1664,7 +1664,7 @@
         function b(c) {
             this.initialize = function (c) {
                 b.prototype.initialize.apply(this, arguments), this.elementType = "node", this.zIndex = a.zIndex_Node, this.text = c, this.font = "12px Consolas", this.fontColor = "255,255,255", this.borderWidth = 0, this.borderColor = "255,255,255", this.borderRadius = null, this.dragable = !0, this.textPosition = "Bottom_Center", this.textOffsetX = 0, this.textOffsetY = 0, this.transformAble = !0, this.inLinks = [], this.outLinks = [];
-                var d = "deviceId,dataType,nodeImage,text,textPosition,templateId".split(",");
+                var d = "nodeId,nodeType,nodeParams,nodeImage,text,textPosition".split(",");
                 this.serializedProperties = this.serializedProperties.concat(d);
                 this.maxHistoryStep = 20;
                 this.currStep = 0;
@@ -1911,7 +1911,7 @@
             this.initialize = function (b, c, d) {
                 if (f.prototype.initialize.apply(this, arguments), this.elementType = "link", this.zIndex = a.zIndex_Link, 0 != arguments.length) {
                     this.text = d, this.nodeA = b, this.nodeZ = c, this.nodeA && null == this.nodeA.outLinks && (this.nodeA.outLinks = []), this.nodeA && null == this.nodeA.inLinks && (this.nodeA.inLinks = []), this.nodeZ && null == this.nodeZ.inLinks && (this.nodeZ.inLinks = []), this.nodeZ && null == this.nodeZ.outLinks && (this.nodeZ.outLinks = []), null != this.nodeA && this.nodeA.outLinks.push(this), null != this.nodeZ && this.nodeZ.inLinks.push(this), this.caculateIndex(), this.font = "12px Consolas", this.fontColor = "255,255,255", this.lineWidth = 2, this.lineJoin = "miter", this.transformAble = !1, this.bundleOffset = 20, this.bundleGap = 12, this.textOffsetX = 0, this.textOffsetY = 0, this.arrowsRadius = null, this.arrowsOffset = 0, this.dashedPattern = null, this.path = [];
-                    var e = "deviceA,deviceZ,lineType,text".split(",");
+                    var e = "nodeSrc,nodeDst,lineType,text".split(",");
                     this.serializedProperties = this.serializedProperties.concat(e)
                 }
             }, this.caculateIndex = function () {
@@ -2211,7 +2211,7 @@
         function b(c) {
             this.initialize = function (c) {
                 b.prototype.initialize.apply(this, null), this.elementType = "container", this.id = "", this.zIndex = a.zIndex_Container, this.width = 200, this.height = 200, this.childs = [], this.alpha = .5, this.dragable = !0, this.childDragble = !0, this.visible = !0, this.fillColor = "10,100,80", this.borderWidth = 0, this.borderColor = "255,255,255", this.borderRadius = null, this.font = "12px Consolas", this.fontColor = "255,255,255", this.text = c, this.textPosition = "Bottom_Center", this.textOffsetX = 0, this.textOffsetY = 0, this.layout = new a.layout.AutoBoundLayout;
-                var e = "childNodes,textPosition,text,id,topoLevel".split(",");
+                var e = "childNodes,textPosition,text,id".split(",");
                 this.serializedProperties = this.serializedProperties.concat(e)
             }, this.initialize(c), this.add = function (a) {
                 this.childs.push(a), a.dragable = this.childDragble
