@@ -1,0 +1,145 @@
+node 属性:										value			描述
+	.outLinks									array			与其它节点连接并以此node为起点的线段的集合	
+	._id										int				全部都是固定值
+	.alarm										String			警告文本
+	.alarmAlpha									int				警告透明度
+	.alarmColor									String			警告文本背景颜色
+	delete node.alarm || node.alarm = null                      移除节点告警
+	.borderColor									String			节点颜色，只读
+	.borderRadius									int				节点半径，非圆节点有此属性会变形
+	.borderWidth									int				边界长度
+	.elementType									String			元素类型
+	.fillColor									String			填充颜色，类似fontColor
+	.inLinks									array			与其它节点连接并以此node为终点的线段的集合
+	.isMouseOver									boolean			是否鼠标指向
+	.messageBus									MessageBus		返回MessageBus对象，作用不明
+	.propertiesStack								array			不明(属性堆栈)
+	.rotate										int				设置node旋转的角度（弧度）
+	.scaleX										int				投影
+	.scaleY										int
+	.selected									boolean			选中状态
+	.selectLocation									int				不明（选择位置？）
+	.serializedProperties								array[27]		序列化对象，其中包含许多节点属性
+	.showSelected                              					boolean			是否显示选中后矩形（默认true）             
+	.strokeColor									String			描边的颜色
+	.text										String			节点文本
+	.textOffsetX									int				文本位置
+	.textOffsetY									int				如上
+	.textPosition									String			位置如“bottom”，“top”等
+	.transformAble									boolean			是否可变行
+	.zIndex										int				不明
+	
+	方法：
+	.setBound(横坐标,纵坐标，宽，高)  			同时设置大小及位置
+	
+
+link	属性：
+	.nodeA										node			起始连接点的节点
+	.nodeZ										node			结束连接点的节点
+	.bundleGap									int     		线段之间的间隔
+	.bundleOffset									int 			线段拐角处长度
+	.getStartPosition()								array({x,y})	获得起始位置的坐标
+	.getEndPosition()								array({x,y})	获得结束位置的坐标
+	.getPath()									array[4]		不明
+	.initialize()									void			不明(初始化？)
+	.inMouseOver									boolean			设为true线段变为鼠标指向状态
+	.draggable									boolean			不明(html拖拽功能？)
+	.lineJoin									String			不明
+	.lineWidth									int				线宽
+	.path										array[4]		和该线段主要连接的node有关
+	.propertiesStack								array			不明(属性堆栈)
+	.nodeIndex									int				节点id
+	.offsetGap									int				控制节点与节点间的最小间距
+	.rotate										int				设置线段旋转的角度（弧度）
+	.scaleX										int				类似node
+	.scaleY										int				同上
+	.selected									boolean			选中状态
+	.selectLocation									int				不明（选择位置？）
+	.serializedProperties								array[27]		序列化对象，其中包含许多线段属性
+	._id										int				全部都是固定值
+	.text										String			该线段显示的文本(鼠标指向时显示)
+	.textOffSetX									int				调整线段文本显示的位置
+	.textOffSetY									int				同上
+	.transformAble									boolean			可变行的
+	.zIndex										int				不明
+	.direction									String          线段文本位置
+	.arrowsRadius									int				箭头半径
+	
+	
+	
+	
+	
+	
+stage	方法
+			
+	.add(JTopo.Scene scene)								void			添加场景
+	.centerAndZoom(scala)								void			缩放并居中显示所有元素	
+	.clear()									void			移除所有场景
+	.click(eventHandler) 								void			监听鼠标单击事件（鼠标按下并松开），等价于：stage.addEventListener("click", eventHandler);
+	.getBound() 									Object			得到舞台中所有元素位置确定的边界大小（left、top、right、bottom)和对应四个节点
+	.saveImageInfo() 								void			导出成PNG图片（在新打开的浏览器Tab页中导出成PNG图片（在新打开的浏览器Tab页中）
+	.saveAsLocalImage() 								void			导出成PNG图片（直接弹出另存为对话框或者用下载软件下载）	
+	.initialize(c)									void			不明（初始化？）
+	.touchend(b)									void
+	.touchmove(b)									void
+	.touchstart(b)									void			不明
+	.paint()									void			绘制
+	.toJson()									json			把当前对象的属性序列化成json数据
+		
+		
+		属性
+	.canvas										HTML元素		显示所有场景元素
+	.childs										array			场景对象列表	
+	.graphics									CanvasRenderingContext2D		2d场景的相关属性包括场景对象
+	.needRePaint									boolean			是否重绘
+	.topoLevel
+	.parentLevel
+
+			
+			
+			
+			
+	
+	
+	
+scene
+		.totalLevel
+	
+	
+	
+	
+	
+	
+JTopo
+		.createStageFromJson(json,canvas)
+	
+	
+	
+	
+	
+JTopo.util
+			.MessageBus				不明
+			.randomColor()			随机颜色
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			.clone(node)		克隆
+			.cloneEvent(node)	克隆事件
+
+
+
+			
+另类节点连线类型
+
+	CircleNode					圆形节点
+	FoldLink					折线
+	FlexionalLink				二次折线
+	CurveLink					曲线
+		
