@@ -454,7 +454,7 @@ TopologyEditor.prototype.initMenus = function () {
     //容器管理菜单
     self.containerMangeMenu.on("click", function (event) {
         var cNode = editor.currentNode;
-        if (!cNode instanceof JTopo.Container) return;
+        if (!(cNode instanceof JTopo.Container)) return;
         $(this).hide();
         var text = $.trim($(event.target).text());
         if (text == "拆分") {
@@ -1023,10 +1023,11 @@ editor.utils = {
     getSelectedNodes: function () {
         var selectedNodes = [];
         var nodes = editor.scene.selectedElements;
-        return nodes.forEach(function (n) {
+        nodes.forEach(function (n) {
             if (n.elementType === "node")
                 selectedNodes.push(n);
-        }), selectedNodes;
+        });
+        return selectedNodes;
     },
     // 节点分组合并
     toMerge: function () {
