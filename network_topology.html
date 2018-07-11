@@ -635,7 +635,6 @@
         var nodes = $("[topo-div-type='topo-node']");
         var nodeLength = nodes.length;
         for (var i = 0; i < nodeLength; i++) {
-            nodes[i].nodeType = nodes[i].getAttribute("topo-nodetype");
             var text = $(nodes[i]).find("span").eq(0).text();
             editor.drag(nodes[i], document.getElementById('topology-canvas'), text);
         }
