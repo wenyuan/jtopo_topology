@@ -1,7 +1,7 @@
 /**
  * 基于jtopo-editor.js的二次封装
  * customized designed by xwenyuan
- * github: https://github.com/xwenyuan/jTopo_topology.git
+ * github: https://github.com/xwenyuan/jtopo_topology.git
  */
 
 /**
@@ -38,7 +38,7 @@ function TopologyPanel() {
 /**
  * 保存序列化的拓扑图JSON数据到服务器
  */
-TopologyPanel.prototype.saveToplogy = function () {
+TopologyPanel.prototype.saveTopology = function () {
     editor.mainMenu.hide();
     var self = this;
     // this.showLoadingWindow();
@@ -513,7 +513,7 @@ TopologyEditor.prototype.replaceStage = function (topologyId) {
                 // self.closeLoadingWindow();
                 console.error(response.msg);
             } else {
-                var topologyJson = response.data;
+                var topologyJson = response.data.topology_json;
                 JTopo.replaceStageWithJson(topologyJson);
                 if (editor.stage && editor.scene && editor.scene.childs && editor.scene.childs.length > 0) {
                     editor.stage.centerAndZoom();
@@ -643,8 +643,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
             self.xInCanvas = menuX;
             self.yInCanvas = menuY;
             if (event.target) {
-                //处理节点右键菜单事件
-                if (event.target instanceof JTopo.Node) {
+                if (event.target instanceof JTopo.Node) {          // 处理节点右键菜单事件
                     var selectedNodes = self.utils.getSelectedNodes();
                     //如果是节点多选状态弹出分组菜单
                     if (selectedNodes && selectedNodes.length > 1) {
@@ -672,14 +671,19 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                             left: menuX
                         }).show();
                     }
-                } else if (event.target instanceof JTopo.Container) {//容器右键菜单
+                } else if (event.target instanceof JTopo.Link) {            // 连线右键菜单
+                    self.lineMenu.css({
+                        top: event.layerY ? event.layerY : event.offsetY,
+                        left: event.layerX ? event.layerX : event.offsetX
+                    }).show();
+                } else if (event.target instanceof JTopo.Container) {       // 容器右键菜单
                     self.containerMangeMenu.css({
                         top: event.layerY ? event.layerY : event.offsetY,
                         left: event.layerX ? event.layerX : event.offsetX
                     }).show();
                 }
             } else {
-                //判断边界出是否能完整显示弹出菜单
+                // 判断边界出是否能完整显示弹出菜单
                 if (menuX + self.mainMenu.width() >= self.stage.width) {
                     menuX -= self.mainMenu.width();
                 }
@@ -907,7 +911,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                     break;
                 case  83:
                     //ctrl+s 保存
-                    editor.saveToplogy(true);
+                    editor.saveTopology(true);
                     //return false;
                     break;
                 case  85:
@@ -925,7 +929,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                     break;
                 case  89:
                     //ctrl+y
-                    editor.utils.clear();
+                    editor.utils.clearTopology();
                     //return false;
                     break;
                 case  90:
@@ -952,7 +956,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
     });
     //第一次进入拓扑编辑器,生成stage和scene对象
     if (topologyJson == "-1") {
-        this.saveToplogy(false);
+        this.saveTopology(false);
     }
     //编辑器初始化完毕关闭loading窗口
     // this.closeLoadingWindow();
@@ -1115,7 +1119,7 @@ editor.utils = {
         }
     },
     // 清空编辑器
-    clear: function () {
+    clearTopology: function () {
         //删除节点表对应的节点记录
         editor.deleteAllNodes();
     },
