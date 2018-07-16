@@ -1023,6 +1023,10 @@ var editor = new TopologyEditor('mainControl');
 
 //工具方法
 editor.utils = {
+    // 获取所有节点
+    getAllNodes: function () {
+        return editor.stage.find('node')
+    },
     // 获取所有选择的节点实例
     getSelectedNodes: function () {
         var selectedNodes = [];
