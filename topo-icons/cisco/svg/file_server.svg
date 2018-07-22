@@ -1,0 +1,107 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5c -->
+<!-- CreationDate: Fri Sep 14 10:46:23 2012 -->
+<!-- Magnification: 1.000 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0.3in" height="0.4in" viewBox="265 12905 362 475">
+<g style="stroke-width:.025in; fill:none">
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="533,12999
+277,12999
+277,13368
+533,13368
+" style="stroke:#00a5d4;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00a5d4;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="533,12999
+277,12999
+277,13368
+533,13368
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="533,13368
+615,13286
+615,12917
+359,12917
+277,12999
+533,12999
+533,13368
+" style="stroke:#00a5d4;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00a5d4;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="533,13368
+615,13286
+615,12917
+359,12917
+277,12999
+533,12999
+533,13368
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="533,12999
+615,12917
+" style="stroke:#00a5d4;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00a5d4;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="533,12999
+615,12917
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="281,13101
+531,13101
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="281,13218
+531,13218
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="365,13171
+438,13171
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="365,13148
+438,13148
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="465,13196
+465,13126
+336,13126
+336,13196
+465,13196
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+</g>
+</svg>

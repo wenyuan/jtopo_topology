@@ -1,0 +1,614 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5c -->
+<!-- CreationDate: Fri Sep 14 10:46:42 2012 -->
+<!-- Magnification: 1.000 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0.7in" height="0.3in" viewBox="-6 12809 861 394">
+<g style="stroke-width:.025in; fill:none">
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="7,13190
+7,13108
+692,13108
+692,13190
+7,13190
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="7,13190
+7,13108
+692,13108
+692,13190
+7,13190
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="692,13108
+6,13108
+173,12867
+843,12867
+692,13108
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="692,13108
+6,13108
+173,12867
+843,12867
+692,13108
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="843,12867
+843,13021
+692,13191
+692,13108
+843,12867
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="843,12867
+843,13021
+692,13191
+692,13108
+843,12867
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="53,13080
+101,13010
+457,13010
+409,13080
+53,13080
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="53,13080
+101,13010
+457,13010
+409,13080
+53,13080
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="101,13010
+149,12940
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="101,13010
+149,12940
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="457,13010
+505,12940
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="457,13010
+505,12940
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="692,13108
+843,12867
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="692,13108
+843,12867
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  spline  -->
+<polyline points="619,12911
+618,12912
+615,12916
+609,12921
+606,12925
+605,12926
+603,12928
+600,12932
+596,12936
+591,12942
+587,12947
+585,12950
+584,12950
+582,12953
+578,12958
+574,12964
+572,12966
+571,12967
+569,12969
+565,12975
+561,12981
+558,12986
+556,12989
+554,12992
+554,12993
+554,12998
+555,13004
+555,13009
+555,13010
+554,13011
+550,13018
+541,13032
+529,13051
+516,13070
+507,13084
+503,13091
+502,13092
+502,13090
+501,13082
+499,13065
+497,13049
+496,13041
+496,13039
+497,13038
+500,13032
+505,13020
+510,13009
+513,13003
+514,13002
+515,13001
+517,12997
+522,12989
+529,12979
+538,12967
+550,12950
+559,12937
+566,12929
+569,12924
+571,12922
+573,12919
+577,12915
+583,12906
+593,12894
+605,12879
+612,12871
+614,12868
+617,12865
+623,12858
+633,12847
+643,12837
+650,12830
+654,12826
+658,12823
+660,12821
+660,12823
+661,12832
+663,12848
+665,12864
+666,12873
+666,12875
+665,12876
+662,12880
+654,12889
+643,12902
+632,12914
+624,12923
+621,12927
+620,12928
+620,12927
+620,12923
+619,12916
+619,12912
+619,12911
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:bevel; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  spline  -->
+<polyline points="619,12911
+618,12912
+615,12916
+609,12921
+606,12925
+605,12926
+603,12928
+600,12932
+596,12936
+591,12942
+587,12947
+585,12950
+584,12950
+582,12953
+578,12958
+574,12964
+572,12966
+571,12967
+569,12969
+565,12975
+561,12981
+558,12986
+556,12989
+554,12992
+554,12993
+554,12998
+555,13004
+555,13009
+555,13010
+554,13011
+550,13018
+541,13032
+529,13051
+516,13070
+507,13084
+503,13091
+502,13092
+502,13090
+501,13082
+499,13065
+497,13049
+496,13041
+496,13039
+497,13038
+500,13032
+505,13020
+510,13009
+513,13003
+514,13002
+515,13001
+517,12997
+522,12989
+529,12979
+538,12967
+550,12950
+559,12937
+566,12929
+569,12924
+571,12922
+573,12919
+577,12915
+583,12906
+593,12894
+605,12879
+612,12871
+614,12868
+617,12865
+623,12858
+633,12847
+643,12837
+650,12830
+654,12826
+658,12823
+660,12821
+660,12823
+661,12832
+663,12848
+665,12864
+666,12873
+666,12875
+665,12876
+662,12880
+654,12889
+643,12902
+632,12914
+624,12923
+621,12927
+620,12928
+620,12927
+620,12923
+619,12916
+619,12912
+619,12911
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:bevel; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="433,13039
+427,13092
+502,13092
+496,13039
+433,13039
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="433,13039
+427,13092
+502,13092
+496,13039
+433,13039
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  spline  -->
+<polyline points="660,12821
+659,12822
+655,12826
+646,12834
+638,12842
+634,12846
+633,12847
+632,12848
+629,12851
+623,12858
+616,12867
+606,12878
+593,12894
+583,12906
+577,12915
+573,12919
+571,12922
+569,12924
+566,12929
+559,12937
+550,12950
+539,12966
+532,12974
+530,12978
+528,12981
+523,12988
+514,13002
+506,13015
+502,13024
+499,13031
+497,13036
+496,13039
+494,13039
+484,13039
+464,13039
+445,13039
+435,13039
+433,13039
+434,13038
+437,13032
+442,13020
+447,13009
+450,13003
+451,13002
+452,13001
+454,12997
+459,12989
+466,12979
+475,12967
+487,12950
+496,12937
+503,12929
+506,12924
+508,12922
+510,12919
+514,12915
+520,12906
+530,12894
+542,12879
+549,12871
+551,12868
+554,12865
+560,12858
+570,12847
+580,12837
+587,12830
+591,12826
+595,12823
+597,12821
+599,12821
+609,12821
+629,12821
+648,12821
+658,12821
+660,12821
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:bevel; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  spline  -->
+<polyline points="660,12821
+659,12822
+655,12826
+646,12834
+638,12842
+634,12846
+633,12847
+632,12848
+629,12851
+623,12858
+616,12867
+606,12878
+593,12894
+583,12906
+577,12915
+573,12919
+571,12922
+569,12924
+566,12929
+559,12937
+550,12950
+539,12966
+532,12974
+530,12978
+528,12981
+523,12988
+514,13002
+506,13015
+502,13024
+499,13031
+497,13036
+496,13039
+494,13039
+484,13039
+464,13039
+445,13039
+435,13039
+433,13039
+434,13038
+437,13032
+442,13020
+447,13009
+450,13003
+451,13002
+452,13001
+454,12997
+459,12989
+466,12979
+475,12967
+487,12950
+496,12937
+503,12929
+506,12924
+508,12922
+510,12919
+514,12915
+520,12906
+530,12894
+542,12879
+549,12871
+551,12868
+554,12865
+560,12858
+570,12847
+580,12837
+587,12830
+591,12826
+595,12823
+597,12821
+599,12821
+609,12821
+629,12821
+648,12821
+658,12821
+660,12821
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:bevel; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="552,13080
+626,12975
+737,12975
+671,13080
+552,13080
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="552,13080
+626,12975
+737,12975
+671,13080
+552,13080
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="631,13080
+700,12975
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="631,13080
+700,12975
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="591,13080
+663,12975
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="591,13080
+663,12975
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="687,13054
+570,13054
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="687,13054
+570,13054
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="704,13028
+589,13028
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="704,13028
+589,13028
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="720,13001
+607,13001
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="720,13001
+607,13001
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+</g>
+</svg>

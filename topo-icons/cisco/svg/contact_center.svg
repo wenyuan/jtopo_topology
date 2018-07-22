@@ -1,0 +1,338 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5c -->
+<!-- CreationDate: Fri Sep 14 10:46:18 2012 -->
+<!-- Magnification: 1.000 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0.4in" height="0.4in" viewBox="4037 5368 510 536">
+<g style="stroke-width:.025in; fill:none">
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4049,5892
+4049,5428
+4490,5428
+4490,5892
+4049,5892
+" style="stroke:#00a5d4;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00a5d4;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4049,5892
+4049,5428
+4490,5428
+4490,5892
+4049,5892
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4094,5380
+4049,5428
+4490,5428
+4535,5380
+4094,5380
+" style="stroke:#00a5d4;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00a5d4;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4094,5380
+4049,5428
+4490,5428
+4535,5380
+4094,5380
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4535,5844
+4535,5380
+4490,5428
+4490,5892
+4535,5844
+" style="stroke:#00a5d4;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00a5d4;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4535,5844
+4535,5380
+4490,5428
+4490,5892
+4535,5844
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4458,5452
+4086,5452
+4086,5867
+4458,5867
+4458,5452
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  spline  -->
+<polyline points="4323,5796
+4323,5797
+4322,5801
+4322,5807
+4321,5811
+4321,5812
+4320,5814
+4319,5817
+4317,5821
+4314,5826
+4311,5830
+4309,5832
+4307,5834
+4303,5837
+4299,5840
+4297,5841
+4296,5841
+4294,5842
+4289,5844
+4283,5845
+4279,5846
+4276,5846
+4273,5846
+4272,5846
+4268,5845
+4262,5845
+4258,5844
+4257,5844
+4255,5843
+4252,5842
+4248,5840
+4243,5837
+4239,5834
+4237,5832
+4235,5830
+4232,5826
+4229,5822
+4228,5820
+4228,5819
+4227,5817
+4225,5812
+4223,5806
+4223,5802
+4222,5799
+4222,5796
+4222,5795
+4223,5791
+4224,5785
+4225,5781
+4225,5780
+4226,5778
+4227,5775
+4229,5771
+4232,5766
+4235,5762
+4237,5760
+4239,5758
+4243,5755
+4247,5752
+4249,5751
+4250,5751
+4252,5750
+4257,5748
+4263,5746
+4267,5746
+4270,5745
+4273,5745
+4274,5745
+4278,5746
+4284,5747
+4288,5748
+4289,5748
+4291,5749
+4294,5750
+4298,5752
+4303,5755
+4307,5758
+4309,5760
+4311,5762
+4314,5766
+4317,5770
+4318,5772
+4318,5773
+4319,5775
+4321,5780
+4322,5786
+4323,5790
+4323,5793
+4323,5796
+" style="stroke:#00a5d4;stroke-width:0;
+stroke-linejoin:bevel; stroke-linecap:butt;
+fill:#00a5d4;
+"/>
+<!-- Line -->
+<!--  spline  -->
+<polyline points="4323,5796
+4323,5797
+4322,5801
+4322,5807
+4321,5811
+4321,5812
+4320,5814
+4319,5817
+4317,5821
+4314,5826
+4311,5830
+4309,5832
+4307,5834
+4303,5837
+4299,5840
+4297,5841
+4296,5841
+4294,5842
+4289,5844
+4283,5845
+4279,5846
+4276,5846
+4273,5846
+4272,5846
+4268,5845
+4262,5845
+4258,5844
+4257,5844
+4255,5843
+4252,5842
+4248,5840
+4243,5837
+4239,5834
+4237,5832
+4235,5830
+4232,5826
+4229,5822
+4228,5820
+4228,5819
+4227,5817
+4225,5812
+4223,5806
+4223,5802
+4222,5799
+4222,5796
+4222,5795
+4223,5791
+4224,5785
+4225,5781
+4225,5780
+4226,5778
+4227,5775
+4229,5771
+4232,5766
+4235,5762
+4237,5760
+4239,5758
+4243,5755
+4247,5752
+4249,5751
+4250,5751
+4252,5750
+4257,5748
+4263,5746
+4267,5746
+4270,5745
+4273,5745
+4274,5745
+4278,5746
+4284,5747
+4288,5748
+4289,5748
+4291,5749
+4294,5750
+4298,5752
+4303,5755
+4307,5758
+4309,5760
+4311,5762
+4314,5766
+4317,5770
+4318,5772
+4318,5773
+4319,5775
+4321,5780
+4322,5786
+4323,5790
+4323,5793
+4323,5796
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:bevel; stroke-linecap:butt;
+"/>
+<!-- Text -->
+<!--  text  -->
+<text xml:space="preserve" x="4245" y="5827" fill="#ffffff"  font-family="Helvetica" font-style="normal" font-weight="bold" font-size="72" text-anchor="start">V</text>
+<!-- Text -->
+<!--  text  -->
+<text xml:space="preserve" x="4179" y="5534" fill="#ffffff"  font-family="Helvetica" font-style="normal" font-weight="bold" font-size="48" text-anchor="start">W</text>
+<!-- Text -->
+<!--  text  -->
+<text xml:space="preserve" x="4242" y="5534" fill="#ffffff"  font-family="Helvetica" font-style="normal" font-weight="bold" font-size="48" text-anchor="start">W</text>
+<!-- Text -->
+<!--  text  -->
+<text xml:space="preserve" x="4305" y="5534" fill="#ffffff"  font-family="Helvetica" font-style="normal" font-weight="bold" font-size="48" text-anchor="start">W</text>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4145,5721
+4431,5721
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4171,5697
+4157,5721
+4171,5745
+4113,5721
+4171,5697
+" style="stroke:#ffffff;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#ffffff;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4405,5564
+4119,5564
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4379,5587
+4393,5563
+4379,5540
+4437,5563
+4379,5587
+" style="stroke:#ffffff;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#ffffff;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4362,5683
+4190,5683
+4190,5594
+4362,5594
+4362,5683
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4190,5594
+4276,5639
+4362,5594
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+</g>
+</svg>

@@ -1,0 +1,176 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5c -->
+<!-- CreationDate: Fri Sep 14 10:46:14 2012 -->
+<!-- Magnification: 1.000 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0.5in" height="0.4in" viewBox="-9 12718 596 492">
+<g style="stroke-width:.025in; fill:none">
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="4,12817
+4,12817
+9,12817
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="90,12730
+3,12818
+3,13197
+496,13197
+575,13129
+574,12730
+" style="stroke:#00a5d4;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00a5d4;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="90,12730
+3,12818
+3,13197
+496,13197
+575,13129
+574,12730
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  spline  -->
+<polyline points="496,12806
+495,12807
+489,12812
+481,12820
+475,12825
+474,12826
+472,12828
+468,12832
+462,12837
+453,12843
+443,12850
+429,12857
+410,12866
+394,12873
+381,12878
+372,12881
+368,12884
+365,12885
+362,12887
+357,12889
+347,12891
+330,12894
+308,12897
+285,12899
+267,12900
+255,12901
+249,12902
+245,12903
+241,12903
+234,12903
+221,12901
+200,12897
+171,12891
+146,12884
+122,12876
+101,12867
+82,12859
+64,12851
+48,12843
+33,12835
+21,12828
+11,12823
+6,12820
+3,12818
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:bevel; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  spline  -->
+<polyline points="90,12730
+93,12730
+98,12730
+109,12730
+125,12730
+146,12730
+174,12730
+208,12730
+246,12730
+288,12730
+332,12730
+376,12730
+418,12730
+456,12730
+490,12730
+518,12730
+539,12730
+555,12730
+566,12730
+571,12730
+574,12730
+573,12731
+569,12737
+562,12747
+558,12753
+557,12754
+555,12756
+552,12761
+547,12767
+541,12774
+532,12782
+520,12792
+503,12802
+485,12812
+473,12818
+466,12822
+463,12825
+460,12827
+452,12830
+436,12834
+410,12838
+388,12840
+370,12841
+358,12841
+352,12842
+349,12843
+345,12843
+338,12843
+325,12840
+303,12835
+273,12826
+250,12818
+228,12809
+208,12799
+189,12790
+172,12780
+155,12771
+140,12762
+126,12753
+114,12745
+103,12739
+96,12734
+92,12731
+90,12730
+" style="stroke:#ffffff;stroke-width:0;
+stroke-linejoin:bevel; stroke-linecap:butt;
+fill:#ffffff;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="496,12806
+496,12806
+496,12807
+496,13198
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="503,12806
+574,12736
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+</g>
+</svg>

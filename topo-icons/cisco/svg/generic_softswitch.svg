@@ -1,0 +1,101 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5c -->
+<!-- CreationDate: Fri Sep 14 10:46:24 2012 -->
+<!-- Magnification: 1.000 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0.3in" height="0.5in" viewBox="-1 12587 409 616">
+<g style="stroke-width:.025in; fill:none">
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="11,13191
+11,12663
+320,12663
+320,13191
+11,13191
+" style="stroke:#00acd8;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00acd8;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="11,13191
+11,12663
+320,12663
+320,13191
+11,13191
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="103,12599
+11,12663
+320,12663
+396,12599
+103,12599
+" style="stroke:#00acd8;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00acd8;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="103,12599
+11,12663
+320,12663
+396,12599
+103,12599
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="396,13107
+396,12599
+320,12663
+320,13191
+396,13107
+" style="stroke:#00acd8;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00acd8;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="396,13107
+396,12599
+320,12663
+320,13191
+396,13107
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="131,12756
+270,12756
+270,12774
+131,12774
+131,12801
+67,12765
+131,12729
+131,12756
+" style="stroke:#ffffff;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#ffffff;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="220,12902
+81,12902
+81,12884
+220,12884
+220,12857
+283,12893
+220,12929
+220,12902
+" style="stroke:#ffffff;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#ffffff;
+"/>
+</g>
+</svg>

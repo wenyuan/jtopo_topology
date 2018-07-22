@@ -1,0 +1,124 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5c -->
+<!-- CreationDate: Fri Sep 14 10:46:43 2012 -->
+<!-- Magnification: 1.000 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0.6in" height="0.2in" viewBox="-4 12909 735 295">
+<g style="stroke-width:.025in; fill:none">
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="8,13191
+8,12981
+471,12981
+471,13191
+8,13191
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="8,13191
+8,12981
+471,12981
+471,13191
+8,13191
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="471,13192
+471,12981
+8,12981
+68,12921
+474,12921
+530,12921
+530,13132
+471,13192
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="471,13192
+471,12981
+8,12981
+68,12921
+474,12921
+530,12921
+530,13132
+471,13192
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="471,12981
+530,12921
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="471,12981
+530,12921
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="471,13135
+8,13135
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="471,13135
+8,13135
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="530,13077
+471,13136
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="530,13077
+471,13136
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="719,12965
+660,13025
+471,13092
+530,13032
+719,12965
+" style="stroke:#02709f;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#02709f;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="719,12965
+660,13025
+471,13092
+530,13032
+719,12965
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+</g>
+</svg>

@@ -1,0 +1,76 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5c -->
+<!-- CreationDate: Fri Sep 14 10:46:19 2012 -->
+<!-- Magnification: 1.000 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1.0in" height="0.3in" viewBox="-4 12819 1231 385">
+<g style="stroke-width:.025in; fill:none">
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="8,13192
+8,12906
+739,12906
+739,13192
+8,13192
+" style="stroke:#00acd8;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00acd8;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="8,13192
+8,12906
+739,12906
+739,13192
+8,13192
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="81,12831
+8,12906
+739,12906
+812,12831
+81,12831
+" style="stroke:#00acd8;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00acd8;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="81,12831
+8,12906
+739,12906
+812,12831
+81,12831
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="812,13117
+812,12831
+739,12906
+739,13192
+812,13117
+" style="stroke:#00acd8;stroke-width:0;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#00acd8;
+"/>
+<!-- Line -->
+<!--  polyline  -->
+<polyline points="812,13117
+812,12831
+739,12906
+739,13192
+812,13117
+" style="stroke:#ffffff;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Text -->
+<!--  text  -->
+<text xml:space="preserve" x="89" y="13093" fill="#ffffff"  font-family="Helvetica" font-style="normal" font-weight="normal" font-size="108" text-anchor="start">DSU/CSU</text>
+</g>
+</svg>
