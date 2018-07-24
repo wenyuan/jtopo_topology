@@ -149,25 +149,26 @@ function TopologyEditor() {
         defaultScal: 0.95,                 // 鼠标滚轮缩放比例
         eagleEyeVsibleDefault: true,    // 是否显示鹰眼对象
         // Node属性
-        defaultWidth: 32,                 // 新建节点默认宽
-        defaultHeight: 32,                // 新建节点默认高
+        nodeDefaultWidth: 32,                 // 新建节点默认宽
+        nodeDefaultHeight: 32,                // 新建节点默认高
         nodeFontColor: "black",          // 节点文字颜色,如"255,255,0"
-        rotateValue: 0.5,                // 节点旋转的角度(弧度)
+        nodeBorderColor: 'black',          // 节点容器边框颜色,如"255,255,0"
+        nodeBorderRadius: 30,               // 节点半径，非圆节点有此属性会变形
+        nodeRotateValue: 0.5,                // 节点旋转的角度(弧度)
         nodeScale: 0.2,                 // 节点缩放幅度(此处保证X和Y均等缩放)
-        alpha: 1,                        // 节点透明度,取值范围[0-1]
+        nodeAlpha: 1,                        // 节点透明度,取值范围[0-1]
         nodeStrokeColor: "22,124,255",    // 节点描边的颜色
         nodefillColor: "22,124,255",         // 节点填充颜色
         nodeShadow: false,              // 节点是否显示阴影
         nodeShadowColor: "rgba(0,0,0,0.5)",  // 节点阴影的颜色
         nodeFont: "12px Consolas",           // 节点字体
-        borderRadius: 30,               // 节点半径，非圆节点有此属性会变形
         // Link属性
-        strokeColor: "black",            // 连线的颜色
-        lineWidth: 1,                     // 连线宽度
-        offsetGap: 40,                    // 折线拐角处的长度
-        arrowsRadius: 5,                 // 线条箭头半径
-        direction: "horizontal",        // 折线的方向
-        lineFontColor: "black",         // 连线文字颜色
+        linkStrokeColor: "123,165,241",            // 连线的颜色
+        linkDefaultWidth: 3,                     // 连线宽度
+        linkOffsetGap: 40,                    // 折线拐角处的长度
+        linkArrowsRadius: 5,                 // 线条箭头半径
+        linkDirection: "horizontal",        // 折线的方向
+        linkFontColor: "black",         // 连线文字颜色
         showLineShadow: false           // 是否显示连线阴影
     };
     // 布局参数
@@ -711,11 +712,11 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                         // 折线
                         self.link = new JTopo.FoldLink(self.tempNodeA, self.tempNodeZ);
                         self.link.lineType = "foldLine";
-                        self.link.direction = self.config.direction;
+                        self.link.direction = self.config.linkDirection;
                     } else if (self.lineType === "flexLine") {
                         // 二次折线
                         self.link = new JTopo.FlexionalLink(self.tempNodeA, self.tempNodeZ);
-                        self.link.direction = self.config.direction;
+                        self.link.direction = self.config.linkDirection;
                         self.link.lineType = "flexLine";
                     } else if (self.lineType === "curveLine") {
                         // 曲线
@@ -723,7 +724,7 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                         self.link.lineType = "curveLine";
                     }
                     self.link.dashedPattern = 2;
-                    self.link.lineWidth = self.config.lineWidth;
+                    self.link.lineWidth = self.config.linkDefaultWidth;
                     self.link.shadow = self.config.showLineShadow;
                     self.link.strokeColor = JTopo.util.randomColor();
                     this.add(self.link);
@@ -762,14 +763,14 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                         link.lineType = "line";
                     } else if (self.lineType === "foldLine") {
                         link = new JTopo.FoldLink(self.beginNode, endNode);
-                        link.direction = self.config.direction;
-                        link.bundleOffset = self.config.offsetGap;//折线拐角处的长度
+                        link.direction = self.config.linkDirection;
+                        link.bundleOffset = self.config.linkOffsetGap;    // 折线拐角处的长度
                         link.lineType = "foldLine";
                     } else if (self.lineType === "flexLine") {
                         link = new JTopo.FlexionalLink(self.beginNode, endNode);
-                        link.direction = self.config.direction;
+                        link.direction = self.config.linkDirection;
                         link.lineType = "flexLine";
-                        link.offsetGap = self.config.offsetGap;
+                        link.offsetGap = self.config.linkOffsetGap;
                     } else if (self.lineType === "curveLine") {
                         link = new JTopo.CurveLink(self.beginNode, endNode);
                         link.lineType = "curveLine";
@@ -778,9 +779,9 @@ TopologyEditor.prototype.init = function (topologyId, backImg, topologyJson) {
                     link.nodeSrc = self.beginNode.nodeId;
                     link.nodeDst = endNode.nodeId;
                     if (self.lineType !== "curveLine")
-                        link.arrowsRadius = self.config.arrowsRadius;
-                    link.strokeColor = self.config.strokeColor;
-                    link.lineWidth = self.config.lineWidth;
+                        link.arrowsRadius = self.config.linkArrowsRadius;
+                    link.strokeColor = self.config.linkStrokeColor;
+                    link.lineWidth = self.config.linkDefaultWidth;
                     this.add(link);
                     self.beginNode = null;
                     this.remove(self.link);
@@ -1003,7 +1004,7 @@ TopologyEditor.prototype.drag = function (modeDiv, drawArea, text) {
                 var node = new JTopo.Node();
                 node.fontColor = self.config.nodeFontColor;
                 // 节点坐标
-                node.setBound((event.layerX ? event.layerX : event.offsetX) - self.scene.translateX - self.config.defaultWidth / 2, (event.layerY ? event.layerY : event.offsetY) - self.scene.translateY - self.config.defaultHeight / 2, self.config.defaultWidth, self.config.defaultHeight);
+                node.setBound((event.layerX ? event.layerX : event.offsetX) - self.scene.translateX - self.config.nodeDefaultWidth / 2, (event.layerY ? event.layerY : event.offsetY) - self.scene.translateY - self.config.nodeDefaultHeight / 2, self.config.nodeDefaultWidth, self.config.nodeDefaultHeight);
                 // 节点图片
                 node.setImage(topoImgPath + img);
                 // 节点数据
@@ -1044,8 +1045,8 @@ editor.utils = {
         var container = new JTopo.Container();
         container.textPosition = 'Top_Center';
         container.fontColor = editor.config.fontColor;
-        container.borderColor = editor.config.borderColor;
-        container.borderRadius = editor.config.borderRadius;
+        container.borderColor = editor.config.nodeBorderColor;
+        container.borderRadius = editor.config.nodeBorderRadius;
         editor.scene.add(container);
         selectedNodes.forEach(function (n) {
             container.add(n);
@@ -1113,13 +1114,13 @@ editor.utils = {
     // 顺时针旋转
     rotateAdd: function () {
         if (editor.currentNode instanceof JTopo.Node) {
-            editor.currentNode.rotate += editor.config.rotateValue;
+            editor.currentNode.rotate += editor.config.nodeRotateValue;
         }
     },
     //逆时针旋转
     rotateSub: function () {
         if (editor.currentNode instanceof JTopo.Node) {
-            editor.currentNode.rotate -= editor.config.rotateValue;
+            editor.currentNode.rotate -= editor.config.nodeRotateValue;
         }
     },
     // 清空编辑器
@@ -1144,7 +1145,7 @@ editor.utils = {
                 newNode[i] = n[i];
             });
             newNode.nodeId = generateUUID();
-            newNode.alpha = editor.config.alpha;
+            newNode.alpha = editor.config.nodeAlpha;
             newNode.strokeColor = editor.config.nodeStrokeColor;
             newNode.fillColor = editor.config.nodefillColor;
             newNode.shadow = editor.config.nodeShadow;
