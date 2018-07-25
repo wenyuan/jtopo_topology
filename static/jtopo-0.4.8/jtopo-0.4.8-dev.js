@@ -122,12 +122,12 @@
                         var c = null, d = a.elementType;
                         if ("node" == d) {
                             c = new JTopo.Node;
-                            c.alpha = editor.config.alpha;
+                            c.alpha = editor.config.nodeAlpha;
                             c.strokeColor = editor.config.nodeStrokeColor;
-                            c.fillColor = editor.config.fillColor;
-                            c.shadow = editor.config.shadow;
-                            c.shadowColor = editor.config.shadowColor;
-                            c.font = editor.config.font;
+                            c.fillColor = editor.config.nodeFillColor;
+                            c.shadow = editor.config.nodeShadow;
+                            c.shadowColor = editor.config.nodeShadowColor;
+                            c.font = editor.config.nodeFont;
                             c.fontColor = editor.config.nodeFontColor;
                             c.borderRadius = null;
                             c.shadowOffsetX = editor.config.shadowOffsetX;
@@ -146,7 +146,7 @@
                             return false;
                         }
                         for (var e in a) {
-                            //加载节点的图片
+                            // 加载节点的图片
                             if (e == "nodeImage") {
                                 c.setImage(topoImgPath + a[e]);
                             }
@@ -166,7 +166,7 @@
                             b.add(c);
                     });
 
-                    //遍历连线上的起始节点
+                    // 遍历连线上的起始节点
                     var nodes = b.getAllNodes();
                     d.forEach(function (a) {
                         var c = null, d = a.elementType;
@@ -175,7 +175,7 @@
                         }
                         if ("link" == d) {
                             var nodeA, nodeZ;
-                            //找出连接点
+                            // 找出连接点
                             if (a["nodeSrc"] && a["nodeDst"]) {
                                 nodes.forEach(function (nodeEle) {
                                     if (nodeEle.elementType == "node") {
@@ -187,29 +187,30 @@
                                 });
                             }
 
-                            if (nodeA && nodeZ) {//折线和直线绘制
-                                if (a["lineType"] == "line")
+                            if (nodeA && nodeZ) {    // 折线和直线绘制
+                                if (a["lineType"] == "line") {
                                     c = new JTopo.Link(nodeA, nodeZ);
+                                }
                                 if (a["lineType"] == "foldLine") {
                                     c = new JTopo.FoldLink(nodeA, nodeZ);
-                                    c.bundleOffset = editor.config.offsetGap;
+                                    c.bundleOffset = editor.config.linkOffsetGap;
                                 }
                                 if (a["lineType"] == "flexLine") {
                                     c = new JTopo.FlexionalLink(nodeA, nodeZ);
-                                    c.offsetGap = editor.config.offsetGap;
+                                    c.offsetGap = editor.config.linkOffsetGap;
                                 }
-                                if (a["lineType"] == "curveLine")
+                                if (a["lineType"] == "curveLine") {
                                     c = new JTopo.CurveLink(nodeA, nodeZ);
-                                c.arrowsRadius = editor.config.arrowsRadius;
-                                c.lineWidth = editor.config.lineWidth;
-                                c.alpha = editor.config.alpha;
-                                c.strokeColor = editor.config.lineStrokeColor;
-                                c.fillColor = editor.config.fillColor;
-                                c.shadow = editor.config.shadow;
-                                c.shadowColor = editor.config.shadowColor;
-                                c.font = editor.config.font;
-                                c.fontColor = editor.config.lineFontColor;
-                                c.lineJoin = editor.config.lineJoin;
+                                }
+                                c.alpha = editor.config.linkAlpha;
+                                c.strokeColor = editor.config.linkStrokeColor;
+                                c.fillColor = editor.config.linkFillColor;
+                                c.shadow = editor.config.linkShadow;
+                                c.shadowColor = editor.config.linkShadowColor;
+                                c.font = editor.config.linkFont;
+                                c.fontColor = editor.config.linkFontColor;
+                                c.arrowsRadius = editor.config.linkArrowsRadius;
+                                c.lineWidth = editor.config.linkDefaultWidth;
                                 c.shadowOffsetX = editor.config.shadowOffsetX;
                                 c.shadowOffsetY = editor.config.shadowOffsetY;
                             }
@@ -219,14 +220,14 @@
                                 if (temp && temp.length > 0) {
                                     c = new JTopo.Container();
                                     c.alpha = editor.config.containerAlpha;
-                                    c.strokeColor = editor.config.nodeStrokeColor;
+                                    c.strokeColor = editor.config.containerStrokeColor;
                                     c.fillColor = editor.config.containerFillColor;
-                                    c.shadow = editor.config.shadow;
-                                    c.shadowColor = editor.config.shadowColor;
-                                    c.font = editor.config.font;
-                                    c.fontColor = editor.config.fontColor;
-                                    c.borderColor = editor.config.borderColor;
-                                    c.borderRadius = editor.config.borderRadius;
+                                    c.shadow = editor.config.containerShadow;
+                                    c.shadowColor = editor.config.containerShadowColor;
+                                    c.font = editor.config.containerFont;
+                                    c.fontColor = editor.config.containerFontColor;
+                                    c.borderColor = editor.config.containerBorderColor;
+                                    c.borderRadius = editor.config.containerBorderRadius;
                                     c.shadowOffsetX = editor.config.shadowOffsetX;
                                     c.shadowOffsetY = editor.config.shadowOffsetY;
                                     for (var ni = 0; ni < temp.length; ni++) {
@@ -258,7 +259,7 @@
                 })
             },
             createStageFromJson: function (jsonObj, canvas) {
-                //eval("var jsonObj = " + jsonStr);
+                // eval("var jsonObj = " + jsonStr);
                 // editor.modeIdIndex = jsonObj.deviceNum;
                 var stage = new JTopo.Stage(canvas);
                 for (var k in jsonObj) {
@@ -295,12 +296,12 @@
                         var c = null, d = a.elementType;
                         if ("node" == d) {
                             c = new JTopo.Node;
-                            c.alpha = editor.config.alpha;
+                            c.alpha = editor.config.nodeAlpha;
                             c.strokeColor = editor.config.nodeStrokeColor;
-                            c.fillColor = editor.config.fillColor;
-                            c.shadow = editor.config.shadow;
-                            c.shadowColor = editor.config.shadowColor;
-                            c.font = editor.config.font;
+                            c.fillColor = editor.config.nodeFillColor;
+                            c.shadow = editor.config.nodeShadow;
+                            c.shadowColor = editor.config.nodeShadowColor;
+                            c.font = editor.config.nodeFont;
                             c.fontColor = editor.config.nodeFontColor;
                             c.borderRadius = null;
                             c.shadowOffsetX = editor.config.shadowOffsetX;
@@ -319,7 +320,7 @@
                             return false;
                         }
                         for (var e in a) {
-                            //加载节点的图片
+                            // 加载节点的图片
                             if (e == "nodeImage") {
                                 c.setImage(topoImgPath + a[e]);
                             }
@@ -339,7 +340,7 @@
                             b.add(c);
                     });
 
-                    //遍历连线上的起始节点
+                    // 遍历连线上的起始节点
                     var nodes = b.getAllNodes();
                     d.forEach(function (a) {
                         var c = null, d = a.elementType;
@@ -348,7 +349,7 @@
                         }
                         if ("link" == d) {
                             var nodeA, nodeZ;
-                            //找出连接点
+                            // 找出连接点
                             if (a["nodeSrc"] && a["nodeDst"]) {
                                 nodes.forEach(function (nodeEle) {
                                     if (nodeEle.elementType == "node") {
@@ -360,29 +361,29 @@
                                 });
                             }
 
-                            if (nodeA && nodeZ) {//折线和直线绘制
+                            if (nodeA && nodeZ) {    // 折线和直线绘制
                                 if (a["lineType"] == "line")
                                     c = new JTopo.Link(nodeA, nodeZ);
                                 if (a["lineType"] == "foldLine") {
                                     c = new JTopo.FoldLink(nodeA, nodeZ);
-                                    c.bundleOffset = editor.config.offsetGap;
+                                    c.bundleOffset = editor.config.linkOffsetGap;
                                 }
                                 if (a["lineType"] == "flexLine") {
                                     c = new JTopo.FlexionalLink(nodeA, nodeZ);
-                                    c.offsetGap = editor.config.offsetGap;
+                                    c.offsetGap = editor.config.linkOffsetGap;
                                 }
-                                if (a["lineType"] == "curveLine")
+                                if (a["lineType"] == "curveLine") {
                                     c = new JTopo.CurveLink(nodeA, nodeZ);
-                                c.arrowsRadius = editor.config.arrowsRadius;
-                                c.lineWidth = editor.config.lineWidth;
-                                c.alpha = editor.config.alpha;
-                                c.strokeColor = editor.config.lineStrokeColor;
-                                c.fillColor = editor.config.fillColor;
-                                c.shadow = editor.config.shadow;
-                                c.shadowColor = editor.config.shadowColor;
-                                c.font = editor.config.font;
-                                c.fontColor = editor.config.lineFontColor;
-                                c.lineJoin = editor.config.lineJoin;
+                                }
+                                c.alpha = editor.config.linkAlpha;
+                                c.strokeColor = editor.config.linkStrokeColor;
+                                c.fillColor = editor.config.linkFillColor;
+                                c.shadow = editor.config.linkShadow;
+                                c.shadowColor = editor.config.linkShadowColor;
+                                c.font = editor.config.linkFont;
+                                c.fontColor = editor.config.linkFontColor;
+                                c.arrowsRadius = editor.config.linkArrowsRadius;
+                                c.lineWidth = editor.config.linkDefaultWidth;
                                 c.shadowOffsetX = editor.config.shadowOffsetX;
                                 c.shadowOffsetY = editor.config.shadowOffsetY;
                             }
@@ -392,14 +393,14 @@
                                 if (temp && temp.length > 0) {
                                     c = new JTopo.Container();
                                     c.alpha = editor.config.containerAlpha;
-                                    c.strokeColor = editor.config.nodeStrokeColor;
+                                    c.strokeColor = editor.config.containerStrokeColor;
                                     c.fillColor = editor.config.containerFillColor;
-                                    c.shadow = editor.config.shadow;
-                                    c.shadowColor = editor.config.shadowColor;
-                                    c.font = editor.config.font;
-                                    c.fontColor = editor.config.fontColor;
-                                    c.borderColor = editor.config.borderColor;
-                                    c.borderRadius = editor.config.borderRadius;
+                                    c.shadow = editor.config.containerShadow;
+                                    c.shadowColor = editor.config.containerShadowColor;
+                                    c.font = editor.config.containerFont;
+                                    c.fontColor = editor.config.containerFontColor;
+                                    c.borderColor = editor.config.containerBorderColor;
+                                    c.borderRadius = editor.config.containerBorderRadius;
                                     c.shadowOffsetX = editor.config.shadowOffsetX;
                                     c.shadowOffsetY = editor.config.shadowOffsetY;
                                     for (var ni = 0; ni < temp.length; ni++) {
@@ -802,7 +803,7 @@
                             j = a.canvas.width / a.childs[0].scaleX / i.width,
                             k = a.canvas.height / a.childs[0].scaleY / i.height;
                         j > 1 && (j = 1), k > 1 && (j = 1), g *= j, h *= k, i.left < 0 && (g -= Math.abs(i.left) * (this.width / i.width)), i.top < 0 && (h -= Math.abs(i.top) * (this.height / i.height)), e.save(), e.lineWidth = 1, e.strokeStyle = "rgba(0,255,0,1)";
-                        //画鹰眼区拖放的长方形小块
+                        // 画鹰眼区拖放的长方形小块
                         e.strokeRect(-g, -h, e.canvas.width * j, e.canvas.height * k), e.restore();
                         var l = null;
                         try {
@@ -828,7 +829,7 @@
                 eventHandler: function (a, b, c) {
                     var d = b.x,
                         e = b.y;
-                    //操作点位于鹰眼区域
+                    // 操作点位于鹰眼区域
                     if (d > c.canvas.width - this.canvas.width && e > c.canvas.height - this.canvas.height) {
                         if (d = b.x - this.canvas.width, e = b.y - this.canvas.height, "mousedown" == a && (this.lastTranslateX = c.childs[0].translateX, this.lastTranslateY = c.childs[0].translateY), "mousedrag" == a && c.childs.length > 0) {
                             var f = b.dx,
@@ -836,7 +837,7 @@
                                 h = c.getBound(),
                                 i = this.canvas.width / c.childs[0].scaleX / h.width,
                                 j = this.canvas.height / c.childs[0].scaleY / h.height;
-                            //比例位移
+                            // 比例位移
                             c.childs[0].translateX = this.lastTranslateX - f / i, c.childs[0].translateY = this.lastTranslateY - g / j
                         }
                     } else {
@@ -918,7 +919,7 @@
              * @param b 创建Stage对象时传入的Canvas对象
              */
             function initJtopoEvent(b) {
-                //事件绑定浏览器兼容性处理：非IE，用addEventlistener(type,fn,false)只监听冒泡事件,为true会监听捕获事件
+                // 事件绑定浏览器兼容性处理：非IE，用addEventlistener(type,fn,false)只监听冒泡事件,为true会监听捕获事件
                 JTopo.util.isIE || !window.addEventListener ? (b.onmouseout = f, b.onmouseover = e, b.onmousedown = g, b.onmouseup = h, b.onmousemove = i, b.onclick = j, b.ondblclick = k, b.onmousewheel = l, b.touchstart = g, b.touchmove = i, b.touchend = h) : (b.addEventListener("mouseout", f), b.addEventListener("mouseover", e), b.addEventListener("mousedown", g), b.addEventListener("mouseup", h), b.addEventListener("mousemove", i), b.addEventListener("click", j), b.addEventListener("dblclick", k), JTopo.util.isFirefox ? b.addEventListener("DOMMouseScroll", l) : b.addEventListener("mousewheel", l)),
                 window.addEventListener && (window.addEventListener("keydown", function (b) {
                     stage.dispatchEventToScenes("keydown", JTopo.util.cloneEvent(b));
@@ -934,25 +935,25 @@
             JTopo.stage = this;
             var stage = this;
 
-            //Stage对象初始化方法，初始化画布，画图对象和初始状态
+            // Stage对象初始化方法，初始化画布，画图对象和初始状态
             this.initialize = function (c) {
                 initJtopoEvent(c), this.canvas = c, this.id = "", this.graphics = c.getContext("2d"), this.childs = [], this.frames = 24, this.messageBus = new JTopo.util.MessageBus, this.eagleEye = eagleEye(this), this.wheelZoom = null, this.mouseDownX = 0, this.mouseDownY = 0, this.mouseDown = !1, this.mouseOver = !1, this.needRepaint = !0, this.serializedProperties = ["wheelZoom", "width", "height", "id"]
             }, null != c && this.initialize(c);
 
             var o = !0,
                 p = null;
-            //禁用右键菜单
+            // 禁用右键菜单
             document.oncontextmenu = function () {
                 return o
             }, this.dispatchEventToScenes = function (eventType, event) {
-                //鼠标移动到鹰眼区域，触发联动位移操作
+                // 鼠标移动到鹰眼区域，触发联动位移操作
                 if (0 != this.frames && (this.needRepaint = !0), 1 == this.eagleEye.visible && -1 != eventType.indexOf("mouse")) {
                     var c = event.x,
                         d = event.y;
                     if (c > this.width - this.eagleEye.width && d > this.height - this.eagleEye.height)
                         return void this.eagleEye.eventHandler(eventType, event, this);
                 }
-                //对每个scene对象调用事件处理函数
+                // 对每个scene对象调用事件处理函数
                 this.childs.forEach(function (c) {
                     if (1 == c.visible) {
                         var d = c[eventType + "Handler"];
@@ -979,12 +980,12 @@
                 this.messageBus.unsubscribe(a)
             }, this.removeAllEventListener = function () {
                 this.messageBus = new JTopo.util.MessageBus
-            }, this.dispatchEvent = function (a, b) {//执行事件处理器
+            }, this.dispatchEvent = function (a, b) {    // 执行事件处理器
                 return this.messageBus.publish(a, b), this
             };
             var q = "click,dbclick,mousedown,mouseup,mouseover,mouseout,mousemove,mousedrag,mousewheel,touchstart,touchmove,touchend,keydown,keyup".split(","),
                 r = this;
-            //绑定事件处理器,订阅事件
+            // 绑定事件处理器,订阅事件
             q.forEach(function (a) {
                 r[a] = function (b) {
                     null != b ? this.addEventListener(a, b) : this.dispatchEvent(a)
@@ -1198,7 +1199,7 @@
                 this.selectedElements.push(a)
             }, this.cancleAllSelected = function (a) {
                 for (var b = 0; b < this.selectedElements.length; b++) this.selectedElements[b].unselectedHandler(a);
-                //编辑器当前节点设置为空
+                // 编辑器当前节点设置为空
                 editor.currentNode = null;
                 this.selectedElements = [];
             }, this.notInSelectedNodes = function (a) {
@@ -1374,7 +1375,7 @@
                             d = Math.round(d * 100) / 100;
                         }
                     }
-                    //TODO modify 2014/11/18 ---  更改背景图为空序列化报错
+                    // TODO modify 2014/11/18 ---  更改背景图为空序列化报错
                     /*"background" == c && (d = a._background.src), */
                     "string" == typeof d && (d = '"' + d + '"'), b += '"' + c + '":' + d + ","
                 }), b += '"childs":[';
@@ -1492,8 +1493,8 @@
         function c() {
             this.initialize = function () {
                 c.prototype.initialize.apply(this, arguments), this.elementType = "interactiveElement", this.dragable = !1, this.selected = !1, this.showSelected = !0, this.selectedLocation = null, this.isMouseOver = !1;
-                //var a = "".split(",");
-                //this.serializedProperties = this.serializedProperties.concat(a)
+                // var a = "".split(",");
+                // this.serializedProperties = this.serializedProperties.concat(a)
             }, this.initialize(), this.paintSelected = function (a) {
                 0 != this.showSelected && (a.save(), a.beginPath(), a.strokeStyle = "rgba(168,202,255, 0.9)", a.fillStyle = "rgba(168,202,236,0.7)", a.rect(-this.width / 2 - 3, -this.height / 2 - 3, this.width + 6, this.height + 6), a.fill(), a.stroke(), a.closePath(), a.restore())
             }, this.paintMouseover = function (a) {
@@ -1592,9 +1593,9 @@
                 if (null == this.selectedPoint) {
                     var b = this.selectedLocation.x + a.dx,
                         c = this.selectedLocation.y + a.dy;
-                    //画标尺线 todo...有什么用?
+                    // 画标尺线 todo...有什么用?
                     // editor.utils.createRuleLines(b + this.width / 2, c + this.height / 2);
-                    //应用自动布局
+                    // 应用自动布局
                     if (this.layout && this.layout.on && this.layout.type == "auto")
                         JTopo.layout.layoutNode(JTopo.stage.childs[0], this, true, a);
                     this.setLocation(b, c), this.dispatchEvent("mousedrag", a);
@@ -2560,7 +2561,7 @@
             return g
         }
 
-        //调整节点a下所有子节点b的位置
+        // 调整节点a下所有子节点b的位置
         function adjustPosition(currNode, nodeChilds, event) {
             if (currNode.layout && currNode.layout.on) {
                 var c = currNode.layout,
@@ -2575,13 +2576,13 @@
                         i = c.direction;
                     e = o(currNode.cx, currNode.cy, nodeChilds.length, g, h, i)
                 } else if ("auto" == d && currNode && currNode instanceof JTopo.Node && event && event.target instanceof JTopo.Node) {
-                    if (currNode.selectedLocation) {//纪录节点最后一次移动完成时的坐标
+                    if (currNode.selectedLocation) {    // 纪录节点最后一次移动完成时的坐标
                         editor.lastMovedX = currNode.selectedLocation.x + event.dx - currNode.x;
                         editor.lastMovedY = currNode.selectedLocation.y + event.dy - currNode.y;
                     }
-                    //子节点同步移动
+                    // 子节点同步移动
                     nodeChilds.forEach(function (n) {
-                        //对于有多个节点指向的情况，为避免重复位移，每次移动幅度按比例缩小
+                        // 对于有多个节点指向的情况，为避免重复位移，每次移动幅度按比例缩小
                         n.setLocation(n.x + editor.lastMovedX / (n.inLinks.length > 0 ? n.inLinks.length : 1), n.y + editor.lastMovedY / (n.inLinks.length > 0 ? n.inLinks.length : 1));
                     });
                 } else {
@@ -2601,7 +2602,7 @@
         }
 
         function layoutNode(scene, rootNode, isRecursion, event) {
-            //获取节点b有连线指向的节点集合
+            // 获取节点b有连线指向的节点集合
             var d = getNodeChilds(scene.childs, rootNode);
             if (0 == d.length) return null;
             if (adjustPosition(rootNode, d, event), 1 == isRecursion)
