@@ -1307,7 +1307,7 @@ editor.utils = {
 
             function nodeFlash(node, n) {
                 if (n == 0) {
-                    //self.unSelectAllNodeExcept(node);
+                    //editor.utils.unSelectAllNodeExcept(node);
                     return;
                 }
                 ;
