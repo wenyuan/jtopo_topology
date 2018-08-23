@@ -11,9 +11,6 @@
 * [layui](http://www.layui.com/)
 其中layui用于本项目的页面布局和组件，非必须。
 
-## Vue版本拓扑图
-> 等有时间了从项目中剥离出来，将在本项目基础上另起一个分支
-
 ## 项目结构
 ```
 .
@@ -35,6 +32,12 @@
 ├── 其它
 |
 ```
+
+## Vue版本拓扑图
+> 等有时间了从项目中剥离出来，将在本项目基础上另起一个分支
+
+## vue版本预览
+![image](https://github.com/xwenyuan/jtopo_topology/blob/master/screenshots/topology.gif)
 
 ## 提交记录
 * 2018.08.23
