@@ -1,9 +1,19 @@
 # jTopo Topology
 > 基于jtopo二次封装，修复了一些bug。
-> 便于直接使用，也可以稍作修改后应用到各前端框架中。
+> 便于直接使用，也可以稍作修改后应用到各前端框架中。 </br>
+> 纯前端项目，所有ajax接口保留，采用模拟数据，实际开发过程中稍作修改即可对接后端。
 
 ## 预览
+预览方式： </br>
+下载该项目代码，用webstorm打开即可预览（或用其他内置http服务器的IDE打开） </br>
 ![image](https://github.com/xwenyuan/jtopo_topology/blob/master/screenshots/topology.png)
+
+## 实现功能
+* 拓扑图的加载
+* 工具栏、鼠标右键菜单
+* 多种类型节点、连线的添加/删除
+* 节点的图片的缩放与调整
+* 鼠标经过节点显示tooltip信息
 
 ## 项目依赖
 * [jQuery](https://jquery.com/)
@@ -33,11 +43,6 @@
 |
 ```
 
-## Vue版本拓扑图
-> 等有时间了从项目中剥离出来，将在本项目基础上另起一个分支
-
-## vue版本预览
-![image](https://github.com/xwenyuan/jtopo_topology/blob/master/screenshots/topology.gif)
 
 ## 提交记录
 * 2018.08.23
@@ -56,6 +61,14 @@
   * 拓扑图序列化
   * 右键菜单和功能
   * 前端页面部分组件化整理
+
+
+## Vue版本拓扑图
+> 等有时间了从项目中剥离出来，将在本项目基础上另起一个分支
+
+## vue版本预览
+![image](https://github.com/xwenyuan/jtopo_topology/blob/master/screenshots/topology.gif)
+
 
 ## 官方API文档补充
 * 参见 [官方API文档补充.txt](https://github.com/xwenyuan/jtopo_topology/blob/master/官方API文档补充.txt)
