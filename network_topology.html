@@ -641,7 +641,7 @@
             editor.drag(nodes[i], document.getElementById('topology-canvas'), text);
         }
         // 加载网络拓扑图
-        editor.loadTopology('${topologyId}', "images/backimg.png");
+        editor.loadTopology(rootPath + '/json/network.json', "images/backimg.png");
 
         // 更新当前拓扑图结构(调用方式)
         // editor.replaceStage(editor.templateId, editor.topologyId, false, this.value);

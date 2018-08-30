@@ -1711,7 +1711,7 @@
         function b(c) {
             this.initialize = function (c) {
                 b.prototype.initialize.apply(this, arguments), this.elementType = "node", this.zIndex = a.zIndex_Node, this.text = c, this.font = "12px Consolas", this.fontColor = "255,255,255", this.borderWidth = 0, this.borderColor = "255,255,255", this.borderRadius = null, this.dragable = !0, this.textPosition = "Bottom_Center", this.textOffsetX = 0, this.textOffsetY = 0, this.transformAble = !0, this.inLinks = [], this.outLinks = [];
-                var d = "nodeId,nodeType,nodeParams,nodeImage,text,textPosition".split(",");
+                var d = "nodeId,nodeType,nodeParams,nodeImage,text,textPosition,layout".split(",");
                 this.serializedProperties = this.serializedProperties.concat(d);
                 this.maxHistoryStep = 20;
                 this.currStep = 0;
