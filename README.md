@@ -17,7 +17,7 @@
 
 ## 项目依赖
 * [jQuery](https://jquery.com/)
-* [jTopo.js](https://github.com/xwenyuan/jtopo_api)
+* [jTopo.js](http://www.jtopo.cn:8080/)
 * [layui](http://www.layui.com/)
 其中layui用于本项目的页面布局和组件，非必须。
 
