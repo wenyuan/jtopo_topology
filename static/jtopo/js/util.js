@@ -18,7 +18,7 @@ var SysUtil = {
 }
 // url根路径
 var rootPath = SysUtil.getRootPath()
-var topoImgPath = '/jtopo_topology/static/public/img/'
+var topoImgPath = '/jtopo_topology/static/jtopo/img/'
 
 /*
  * 生成uuid算法,碰撞率低于1/2^^122

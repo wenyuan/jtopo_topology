@@ -198,7 +198,7 @@
 .topology-context {
     overflow: auto;
     position: relative;
-    background: #fff url(/jTopo_topology/static/public/img/backimg.png);
+    background: #fff url(/jTopo_topology/static/jtopo/img/backimg.png);
 }
 
 /********** 顶部工具栏 **********/
