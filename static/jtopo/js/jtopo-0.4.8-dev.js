@@ -30,12 +30,12 @@
                     c = this.serializedProperties.length;
                 return this.serializedProperties.forEach(function (d, e) {
                     var f = a[d];
-                    // xwenyuan修改,在源码层做反序列化保护,防undefined
+                    // wenyuan修改,在源码层做反序列化保护,防undefined
                     // todo...这里如果是未定义,统一置为'',需要验证有没有必要置为对应变量类型的默认值
                     if (typeof f == "undefined") {
                         f = ""
                     }
-                    // xwenyuan修改,element的参数支持json对象
+                    // wenyuan修改,element的参数支持json对象
                     // todo...typeof有六种可能:"number"、"string"、"boolean"、"object"、"function"、"undefined".逐一验证
                     if (typeof f == "number") {
                         if (d == "width" || d == "height") {
@@ -1014,7 +1014,7 @@
                 var c = this.eagleEye.getImage(a, b);
                 return c.replace("image/png", "image/octet-stream"), window.location.href = c, this
             }, this.exportAsImage = function (a, b) {
-                // xwenyuan新增以图片形式导出拓扑图
+                // wenyuan新增以图片形式导出拓扑图
                 var c = this.eagleEye.getImage(a, b);
                 function dataURLtoBlob(dataurl) {
                     var arr = dataurl.split(',');

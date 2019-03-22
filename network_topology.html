@@ -14,15 +14,15 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header layui-bg-gray">
-        <a href="https://github.com/xwenyuan/jTopo_topology.git" target="_blank">
+        <a href="https://github.com/winyuan/jtopo_topology" target="_blank">
             <div class="layui-logo">网络拓扑图</div>
         </a>
         <!-- 顶部工具栏 -->
         <div class="layui-nav layui-layout-right">
             <input class="layui-input" id="queryText" style="display: inline-block;width: 150px;height: 25px;"
-                   placeholder="todo...节点搜索功能" onclick="alert('该功能暂时还未实现')">
+                   placeholder="输入关键词查找节点" onclick="layer.msg('这个功能自己尝试去实现吧')">
             <i class="fa fa-pencil-square-o toolbar-icon" aria-hidden="true" title="编辑"
-               onClick="editor.utils.editTopology()"></i>
+               onClick="editor.utils.setEditMode()"></i>
             <i class="fa fa-arrows toolbar-icon" aria-hidden="true" title="全屏查看"
                onClick="editor.utils.showInFullScreen(editor.stage.canvas,'RequestFullScreen')"></i>
             <i class="fa fa-align-center toolbar-icon" aria-hidden="true" title="居中显示"
@@ -109,11 +109,10 @@
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-link" topo-linktype="curveline"
-                                                 draggable="false"
+                                            <div topo-div-type="topo-link" topo-linktype="curveline" draggable="false"
                                                  onclick="editor.lineType='curveLine'">
                                                 <img class="link-icon-style" id="link-curveline"
-                                                     src="static/jtopo/img/curveline.png"/>
+                                                     src="static/jtopo/img/line_curveline.png"/>
                                                 <br><span>曲线</span>
                                             </div>
                                         </td>
@@ -122,41 +121,89 @@
                             </div>
                         </div>
                         <div class="layui-colla-item">
-                            <h2 class="layui-colla-title">虚拟网络设备</h2>
-                            <div class="layui-colla-content layui-show">
+                            <h2 class="layui-colla-title">网络设备</h2>
+                            <div class="layui-colla-content">
                                 <table width="100%">
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true"
-                                                 title="这是一个交换机">
-                                                <img class="node-icon-style" src="static/jtopo/img/icon_switcher.png"/>
-                                                <br><span>交换机</span>
+                                            <div topo-div-type="topo-node" topo-nodetype="SWITCH" draggable="true"
+                                                 title="直接面向用户连接或访问网络的交换机">
+                                                <img class="node-icon-style"
+                                                     src="static/jtopo/img/icon_access_switch.png"/>
+                                                <br><span>接入层交换机</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true"
-                                                 title="这是一个路由器">
-                                                <img class="node-icon-style" src="static/jtopo/img/icon_router.png"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="SWITCH" draggable="true"
+                                                 title="多台接入层交换机的汇聚点">
+                                                <img class="node-icon-style"
+                                                     src="static/jtopo/img/icon_convergence_switch.png"/>
+                                                <br><span>汇聚层交换机</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div topo-div-type="topo-node" topo-nodetype="SWITCH" draggable="true"
+                                                 title="位于核心层（网络主干部分的交换机）">
+                                                <img class="node-icon-style"
+                                                     src="static/jtopo/img/icon_core_switch.png"/>
+                                                <br><span>核心交换机</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div topo-div-type="topo-node" topo-nodetype="SWITCH" draggable="true"
+                                                 title="无线网路的接入点（Access Point）">
+                                                <img class="node-icon-style"
+                                                     src="static/jtopo/img/icon_router.png"/>
+                                                <br><span>无线AP</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div topo-div-type="topo-node" topo-nodetype="SWITCH" draggable="true"
+                                                 title="路由器">
+                                                <img class="node-icon-style"
+                                                     src="static/jtopo/img/icon_ap.png"/>
                                                 <br><span>路由器</span>
                                             </div>
                                         </td>
                                     </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">安全设备</h2>
+                            <div class="layui-colla-content">
+                                <table width="100%">
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true"
-                                                 title="使用一台VM主机安装多个网卡进行子网的互通,充当路由控制器">
+                                            <div topo-div-type="topo-node" topo-nodetype="SECURITY" draggable="true"
+                                                 title="入侵防御系统">
                                                 <img class="node-icon-style"
-                                                     src="static/jtopo/img/icon_route_controller.png"/>
-                                                <br><span>VM路由控制器</span>
+                                                     src="static/jtopo/img/icon_ips.png"/>
+                                                <br><span>IPS</span>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true">
+                                            <div topo-div-type="topo-node" topo-nodetype="SECURITY" draggable="true"
+                                                 title="Web应用防火墙">
+                                                <img class="node-icon-style" src="static/jtopo/img/icon_waf.png"/>
+                                                <br><span>WAF</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div topo-div-type="topo-node" topo-nodetype="SECURITY" draggable="true"
+                                                 title="防火墙">
                                                 <img class="node-icon-style" src="static/jtopo/img/icon_firewall.png"/>
                                                 <br><span>防火墙</span>
                                             </div>
@@ -164,8 +211,20 @@
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VE" draggable="true">
-                                                <img class="node-icon-style" src="static/jtopo/img/icon_balancer.png"/>
+                                            <div topo-div-type="topo-node" topo-nodetype="SECURITY" draggable="true"
+                                                 title="漏洞扫描">
+                                                <img class="node-icon-style"
+                                                     src="static/jtopo/img/icon_xscan.png"/>
+                                                <br><span>漏洞扫描</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100%" align="center">
+                                            <div topo-div-type="topo-node" topo-nodetype="SECURITY" draggable="true"
+                                                 title="负载均衡">
+                                                <img class="node-icon-style"
+                                                     src="static/jtopo/img/icon_balancing.png"/>
                                                 <br><span>负载均衡</span>
                                             </div>
                                         </td>
@@ -174,123 +233,46 @@
                             </div>
                         </div>
                         <div class="layui-colla-item">
-                            <h2 class="layui-colla-title">虚拟主机</h2>
-                            <div class="layui-colla-content layui-show">
+                            <h2 class="layui-colla-title">服务器设备</h2>
+                            <div class="layui-colla-content">
                                 <table width="100%">
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                            <div topo-div-type="topo-node" topo-nodetype="SERVER" draggable="true"
+                                                 title="网络服务器">
                                                 <img class="node-icon-style"
-                                                     src="static/jtopo/img/icon_virtual_host.png"/>
-                                                <br><span>虚拟主机</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
-                                                <img class="node-icon-style" src="static/jtopo/img/icon_client.png"/>
-                                                <br><span>客户机</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
-                                                <img class="node-icon-style" src="static/jtopo/img/icon_server.png"/>
+                                                     src="static/jtopo/img/icon_server.png"/>
                                                 <br><span>服务器</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                            <div topo-div-type="topo-node" topo-nodetype="SERVER" draggable="true"
+                                                 title="跳板机/堡垒机">
                                                 <img class="node-icon-style"
-                                                     src="static/jtopo/img/icon_webserver.png"/>
-                                                <br><span>Web服务器</span>
+                                                     src="static/jtopo/img/icon_proxy_server.png"/>
+                                                <br><span>代理服务器</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                            <div topo-div-type="topo-node" topo-nodetype="SERVER" draggable="true"
+                                                 title="数据库节点，用于存储数据">
                                                 <img class="node-icon-style"
-                                                     src="static/jtopo/img/icon_mailserver.png"/>
-                                                <br><span>邮件服务器</span>
+                                                     src="static/jtopo/img/icon_data_server.png"/>
+                                                <br><span>数据库服务器</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="VM" draggable="true">
+                                            <div topo-div-type="topo-node" topo-nodetype="SERVER" draggable="true"
+                                                 title="WEB服务器">
                                                 <img class="node-icon-style"
-                                                     src="static/jtopo/img/icon_fileserver.png"/>
-                                                <br><span>文件服务器</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="layui-colla-item">
-                            <h2 class="layui-colla-title">物理网络设备</h2>
-                            <div class="layui-colla-content layui-show">
-                                <table width="100%">
-                                    <tr>
-                                        <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="PM" draggable="true">
-                                                <img class="node-icon-style"
-                                                     src="static/jtopo/img/icon_physical_host.png"/>
-                                                <br><span>物理主机</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="PM" draggable="true">
-                                                <img class="node-icon-style"
-                                                     src="static/jtopo/img/icon_physical_switcher.png"/>
-                                                <br><span>物理交换机</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="PM" draggable="true">
-                                                <img class="node-icon-style" src="static/jtopo/img/icon_firewall.png"/>
-                                                <br><span>物理防火墙</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="PM" draggable="true">
-                                                <img class="node-icon-style"
-                                                     src="static/jtopo/img/icon_physical_router.png"/>
-                                                <br><span>物理路由器</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="layui-colla-item">
-                            <h2 class="layui-colla-title">位置图形</h2>
-                            <div class="layui-colla-content layui-show">
-                                <table width="100%">
-                                    <tr>
-                                        <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="CL" draggable="true">
-                                                <img class="node-icon-style" src="static/jtopo/img/icon_cloud.png"/>
-                                                <br><span>云</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="100%" align="center">
-                                            <div topo-div-type="topo-node" topo-nodetype="HO" draggable="true">
-                                                <img class="node-icon-style" src="static/jtopo/img/icon_house.png"/>
-                                                <br><span>房屋</span>
+                                                     src="static/jtopo/img/icon_web_server.png"/>
+                                                <br><span>WEB服务器</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -455,7 +437,7 @@
                              onMouseOut="this.style.backgroundColor=''">
                             <span>缩小(Shift-)</span>
                         </div>
-                        <div class="fa fa-trash-o menu-item" onClick="editor.utils.clear();"
+                        <div class="fa fa-trash-o menu-item" onClick="editor.utils.clearTopology();"
                              onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>清空(Shift+Y)</span>
@@ -476,7 +458,7 @@
                              onMouseOut="this.style.backgroundColor=''">
                             <span>居中显示(Shift+G)</span>
                         </div>
-                        <div class="fa fa-floppy-o menu-item" onClick="editor.saveToplogy(true)"
+                        <div class="fa fa-floppy-o menu-item" onClick="editor.saveTopology(true)"
                              onMouseMove="this.style.backgroundColor='#c5e7f6'"
                              onMouseOut="this.style.backgroundColor=''">
                             <span>保存(Shift+S)</span>
@@ -525,18 +507,18 @@
                         </div>
                     </div>
 
-                    <!-- 鼠标悬浮显示节点信息 -->
-                    <div class="node-infobox" style="display: none;">
-                        <span>节点名称：<label name="node_name"></label></span>
-                        <span>当前时间：<label name="current_time"></label></span>
-                    </div>
                     <canvas class="topology-context" id="topology-canvas">
                         您的浏览器不支持HTML5!
                     </canvas>
                 </div>
             </div>
             <div class="layui-col-md2">
-                <p style="text-align: center;font-size: 20px;padding-top: 50%;">其他信息:</p>
+                <!-- 鼠标悬浮显示节点信息 -->
+                <p style="text-align: center;font-size: 14px;padding-top: 20px;">节点名称：</p>
+                <p id="node-name" style="text-align: center;font-size: 14px;">（鼠标悬浮节点查看）</p>
+                <p style="text-align: center;font-size: 14px;">当前时间：</p>
+                <p id="current-time" style="text-align: center;font-size: 14px;">（鼠标悬浮节点查看）</p>
+                <p style="text-align: center;font-size: 20px;padding-top: 50%;">还可以放置其他信息:</p>
                 <p style="text-align: center;font-size: 20px;">比如结合highcharts放一些节点联动的图表信息</p>
             </div>
         </div>
