@@ -1,7 +1,7 @@
 /**
  * 基于jtopo-editor.js的二次封装
  * designed by wenyuan
- * github: https://github.com/winyuan/jtopo_topology
+ * github: https://github.com/wenyuan/jtopo_topology
  */
 
 /**

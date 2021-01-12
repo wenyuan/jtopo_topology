@@ -6,7 +6,7 @@
 ## 预览
 预览方式： </br>
 下载该项目代码，用webstorm打开即可预览（或用其他内置http服务器的IDE打开） </br>
-![image](https://github.com/winyuan/jtopo_topology/blob/master/screenshots/topology.png)
+![image](https://github.com/wenyuan/jtopo_topology/blob/master/screenshots/topology.png)
 
 ## 实现功能
 * 拓扑图的加载
@@ -69,8 +69,8 @@
 > 等有时间了从项目中剥离出来，将在本项目基础上另起一个分支
 
 ## vue版本预览
-![image](https://github.com/winyuan/jtopo_topology/blob/master/screenshots/topology.gif)
+![image](https://github.com/wenyuan/jtopo_topology/blob/master/screenshots/topology.gif)
 
 
 ## 官方API文档补充
-* 参见 [官方API文档补充.txt](https://github.com/winyuan/jtopo_topology/blob/master/官方API文档补充.txt)
+* 参见 [官方API文档补充.txt](https://github.com/wenyuan/jtopo_topology/blob/master/官方API文档补充.txt)
